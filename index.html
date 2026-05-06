@@ -366,6 +366,115 @@ function spawnParticles(cx,cy,color,count){
   if(navigator.vibrate) navigator.vibrate(count>=5?[25,8,25]:[12]);
 }
 
+// ══════════════════════════════════════════
+// SOUND ENGINE — Web Audio API
+// ══════════════════════════════════════════
+let _ac=null;
+function getAC(){
+  if(!_ac) _ac=new(window.AudioContext||window.webkitAudioContext)();
+  // iframe/브라우저 정책: 유저 인터랙션 후 resume
+  if(_ac.state==='suspended') _ac.resume();
+  return _ac;
+}
+
+// 기본 합성음 생성기
+function playTone({freq=440,freq2=freq,type='sine',attack=0.01,decay=0.12,vol=0.22,detune=0}={}){
+  try{
+    const ac=getAC();
+    const g=ac.createGain();
+    g.gain.setValueAtTime(0,ac.currentTime);
+    g.gain.linearRampToValueAtTime(vol,ac.currentTime+attack);
+    g.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+attack+decay);
+    g.connect(ac.destination);
+    const o=ac.createOscillator();
+    o.type=type;
+    o.frequency.setValueAtTime(freq,ac.currentTime);
+    o.frequency.linearRampToValueAtTime(freq2,ac.currentTime+attack+decay);
+    o.detune.setValueAtTime(detune,ac.currentTime);
+    o.connect(g);
+    o.start(ac.currentTime);
+    o.stop(ac.currentTime+attack+decay+0.05);
+  }catch(e){}
+}
+
+// 노이즈 버스트 (터지는 느낌)
+function playNoise({dur=0.08,vol=0.15,freq=800,q=2}={}){
+  try{
+    const ac=getAC();
+    const buf=ac.createBuffer(1,ac.sampleRate*dur,ac.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let i=0;i<d.length;i++) d[i]=(Math.random()*2-1);
+    const src=ac.createBufferSource();
+    src.buffer=buf;
+    const f=ac.createBiquadFilter();
+    f.type='bandpass'; f.frequency.value=freq; f.Q.value=q;
+    const g=ac.createGain();
+    g.gain.setValueAtTime(vol,ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001,ac.currentTime+dur);
+    src.connect(f); f.connect(g); g.connect(ac.destination);
+    src.start(); src.stop(ac.currentTime+dur+0.02);
+  }catch(e){}
+}
+
+// ── 동물별 특색 사운드 ──
+const ANIMAL_SOUND={
+  // 🐶 강아지: 명랑한 업스윕 "왈왈" 느낌
+  dog(combo){
+    const p=1+Math.min(combo,4)*0.04;
+    playTone({freq:520*p,freq2:780*p,type:'triangle',attack:0.01,decay:0.13,vol:0.2});
+    setTimeout(()=>playTone({freq:600*p,freq2:900*p,type:'triangle',attack:0.01,decay:0.1,vol:0.15}),60);
+  },
+  // 🐱 고양이: 부드럽고 높은 "냥" 느낌 — 사인파 + 피치 드롭
+  cat(combo){
+    const p=1+Math.min(combo,4)*0.04;
+    playTone({freq:900*p,freq2:680*p,type:'sine',attack:0.02,decay:0.18,vol:0.22});
+    playTone({freq:1100*p,freq2:800*p,type:'sine',attack:0.04,decay:0.14,vol:0.1,detune:7});
+  },
+  // 🐷 돼지: 둥글둥글 낮은 "꿀꿀" — 사각파 낮은음
+  pig(combo){
+    const p=1+Math.min(combo,4)*0.04;
+    playTone({freq:260*p,freq2:200*p,type:'square',attack:0.01,decay:0.1,vol:0.13});
+    playNoise({dur:0.07,vol:0.1,freq:400,q:1.5});
+    setTimeout(()=>playTone({freq:240*p,freq2:180*p,type:'square',attack:0.01,decay:0.09,vol:0.1}),55);
+  },
+  // 🦝 너구리: 통통 튀는 중간음 + 노이즈 믹스
+  raccoon(combo){
+    const p=1+Math.min(combo,4)*0.04;
+    playTone({freq:400*p,freq2:550*p,type:'sawtooth',attack:0.01,decay:0.11,vol:0.15});
+    playNoise({dur:0.06,vol:0.12,freq:600,q:3});
+  },
+  // 🐻 곰: 묵직하고 낮은 "우웅" — 낮은 사인파
+  bear(combo){
+    const p=1+Math.min(combo,4)*0.04;
+    playTone({freq:160*p,freq2:120*p,type:'sine',attack:0.02,decay:0.22,vol:0.28});
+    playTone({freq:200*p,freq2:150*p,type:'triangle',attack:0.01,decay:0.15,vol:0.14,detune:-5});
+  },
+};
+
+// 콤보 팡파레
+function playComboSound(combo){
+  try{
+    const ac=getAC();
+    const notes=[523,659,784,1047];
+    const pick=notes.slice(0,Math.min(combo,4));
+    pick.forEach((f,i)=>{
+      setTimeout(()=>playTone({freq:f,freq2:f*1.05,type:'sine',attack:0.01,decay:0.12,vol:0.18}),i*55);
+    });
+  }catch(e){}
+}
+
+// 클리어 팡파레
+function playClearSound(){
+  [523,659,784,1047,1319].forEach((f,i)=>{
+    setTimeout(()=>playTone({freq:f,type:'sine',attack:0.02,decay:0.2,vol:0.2}),i*80);
+  });
+}
+
+// 스왑 실패음
+function playFailSound(){
+  playTone({freq:220,freq2:180,type:'sawtooth',attack:0.01,decay:0.1,vol:0.1});
+}
+
 function updateParticles(dt){
   particles.forEach(p=>{p.x+=p.vx*dt*.055;p.y+=p.vy*dt*.055;p.vy+=.16;p.life-=p.decay;p.sz*=.974;});
   particles=particles.filter(p=>p.life>0);
@@ -568,9 +677,11 @@ function popCells(cells,fromInteract=false){
     spawnParticles(c*CELL+CELL/2,r*CELL+CELL/2,CCSS[type]||'#fff',n);
     popAnims.push({r,c,t:0});
   });
+  // ★ 동물별 팝 사운드
+  if(ANIMAL_SOUND[type]) ANIMAL_SOUND[type](G.combo);
   const fc=cells[Math.floor(cells.length/2)];
   addFloat('+'+pts,fc.c*CELL+CELL/2,fc.r*CELL);
-  if(G.combo>=2) showCombo(G.combo);
+  if(G.combo>=2){ showCombo(G.combo); playComboSound(G.combo); }
   if(isAllClear) showAllClear();
   updateUI();
 
@@ -795,6 +906,7 @@ async function trySwap(r1,c1,r2,c2){
     G.grid[r1][c1]=a;G.grid[r2][c2]=b;
     swapAnim={r1,c1,r2,c2,t:0};
     G.combo=0;clearTimeout(comboResetTimer);
+    playFailSound(); // ★ 스왑 실패음
   }
   updateUI();
 }
@@ -903,7 +1015,7 @@ function addFloat(text,x,y){
 }
 
 let comboTimer,comboResetTimer=null;
-const COMBO_WINDOW=600; // 더 짧게 — 콤보 유지 어렵게
+const COMBO_WINDOW=720; // 더 짧게 — 콤보 유지 어렵게
 function armComboReset(){
   clearTimeout(comboResetTimer);
   comboResetTimer=setTimeout(()=>{if(G.combo>0){G.combo=0;document.getElementById('combo-badge').classList.remove('show');}},COMBO_WINDOW);
@@ -929,6 +1041,7 @@ let stageClearTimer;
 function showStageClearToast(){
   const el=document.getElementById('stage-clear-toast');
   el.textContent='🎉 스테이지 클리어!';el.classList.add('show');
+  playClearSound(); // ★ 클리어 팡파레
   clearTimeout(stageClearTimer);stageClearTimer=setTimeout(()=>el.classList.remove('show'),900);
 }
 
@@ -994,15 +1107,55 @@ const hide=id=>document.getElementById(id).classList.remove('on');
 // ══════════════════════════════════════════
 // RANKING
 // ══════════════════════════════════════════
-function loadRank(){try{return JSON.parse(localStorage.getItem(RANK_KEY)||'[]');}catch{return[];}}
-function saveRank(list){try{localStorage.setItem(RANK_KEY,JSON.stringify(list));}catch{}}
+// ══════════════════════════════════════════
+// RANKING — JSONBin.io 클라우드 저장
+// ══════════════════════════════════════════
+// ★ 아래 두 값을 JSONBin.io에서 발급받은 값으로 교체하세요
+const JSONBIN_KEY = 'YOUR_API_KEY';   // X-Master-Key
+const JSONBIN_BIN = 'YOUR_BIN_ID';    // Bin ID
 
-function submitScore(){
+const BIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN}`;
+
+async function loadRank(){
+  try{
+    const res=await fetch(`${BIN_URL}/latest`,{
+      headers:{'X-Master-Key':JSONBIN_KEY,'X-Bin-Meta':false}
+    });
+    if(!res.ok) throw new Error();
+    const data=await res.json();
+    return Array.isArray(data)?data:[];
+  }catch{
+    // 네트워크 실패 시 로컬 캐시 사용
+    try{return JSON.parse(localStorage.getItem(RANK_KEY)||'[]');}catch{return[];}
+  }
+}
+
+async function saveRank(list){
+  try{
+    await fetch(BIN_URL,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
+      body:JSON.stringify(list)
+    });
+    // 로컬에도 캐시
+    localStorage.setItem(RANK_KEY,JSON.stringify(list));
+  }catch{
+    localStorage.setItem(RANK_KEY,JSON.stringify(list));
+  }
+}
+
+async function submitScore(){
   const nick=(document.getElementById('nick-input').value.trim()||'익명').slice(0,8);
-  let list=loadRank();
+  // 로딩 표시
+  document.querySelector('#ov-over .btn-p').textContent='저장 중...';
+  let list=await loadRank();
   list.push({nick,score:G.score,st:G.lv+1,date:new Date().toLocaleDateString('ko-KR')});
-  list.sort((a,b)=>b.score-a.score);list=list.slice(0,30);saveRank(list);
-  hide('ov-over');renderRank(list,nick,G.score);show('ov-rank');
+  list.sort((a,b)=>b.score-a.score);
+  list=list.slice(0,30);
+  await saveRank(list);
+  hide('ov-over');
+  renderRank(list,nick,G.score);
+  show('ov-rank');
 }
 
 function renderRank(list,myNick,myScore){
