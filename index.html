@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
@@ -21,11 +22,11 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 
 #hdr{padding:5px 14px 4px;flex-shrink:0;background:linear-gradient(180deg,#2d0f4e,#1a0a2e);border-bottom:1px solid rgba(192,132,252,.2)}
 #hdr-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-#lv-badge{background:var(--purple2);color:#fff;font-size:11px;font-weight:900;padding:3px 12px;border-radius:20px}
+#lv-badge{background:var(–purple2);color:#fff;font-size:11px;font-weight:900;padding:3px 12px;border-radius:20px}
 #score-area{text-align:center}
 #timer-area{text-align:right;min-width:60px}
-.hdr-lbl{font-size:9px;color:var(--sub);letter-spacing:.1em;font-weight:700}
-.hdr-val{font-size:20px;font-weight:900;color:var(--txt);line-height:1}
+.hdr-lbl{font-size:9px;color:var(–sub);letter-spacing:.1em;font-weight:700}
+.hdr-val{font-size:20px;font-weight:900;color:var(–txt);line-height:1}
 #timer-val.danger{color:#f87171;animation:tpulse .4s infinite alternate}
 #timer-val.critical{color:#ff2020;animation:tpulse .18s infinite alternate}
 @keyframes tpulse{to{transform:scale(1.15)}}
@@ -34,16 +35,16 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 #score-goal-bar{height:100%;background:linear-gradient(90deg,#fbbf24,#f59e0b);border-radius:99px;width:0%;transition:width .4s}
 
 #tgt-panel{background:rgba(0,0,0,.2);border-radius:10px;padding:5px 7px 4px;border:1px solid rgba(192,132,252,.12)}
-#tgt-panel-title{font-size:9px;color:var(--sub);font-weight:700;margin-bottom:4px;display:flex;justify-content:space-between}
-#tgt-panel-title span{color:var(--purple);font-size:9px}
+#tgt-panel-title{font-size:9px;color:var(–sub);font-weight:700;margin-bottom:4px;display:flex;justify-content:space-between}
+#tgt-panel-title span{color:var(–purple);font-size:9px}
 #tgt-grid{display:grid;gap:3px}
 .tgt-item{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.04);border-radius:7px;padding:3px 6px;border:1px solid rgba(255,255,255,.05);transition:background .25s,border-color .25s}
 .tgt-item.done-item{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.28)}
 .tgt-icon-wrap{width:28px;height:28px;flex-shrink:0}
 .tgt-bar-wrap{flex:1}
 .tgt-name-row{display:flex;justify-content:space-between}
-.tgt-name{font-size:8px;color:var(--sub);font-weight:700}
-.tgt-count{font-size:9px;font-weight:900;color:var(--txt)}
+.tgt-name{font-size:8px;color:var(–sub);font-weight:700}
+.tgt-count{font-size:9px;font-weight:900;color:var(–txt)}
 .tgt-count.done-count{color:#4ade80}
 .tgt-track{height:4px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden;margin-top:2px}
 .tgt-fill{height:100%;border-radius:99px;transition:width .35s cubic-bezier(.34,1.2,.64,1)}
@@ -55,10 +56,10 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 #gc{display:block;touch-action:none}
 
 #combo-badge,#allclear-badge,#score-warn,#stage-clear-toast{
-  position:absolute;left:50%;color:#fff;font-weight:900;border-radius:99px;
-  pointer-events:none;z-index:10;white-space:nowrap;
-  transform:translateX(-50%) scale(0);opacity:0;
-  transition:transform .2s cubic-bezier(.34,1.56,.64,1),opacity .2s;
+position:absolute;left:50%;color:#fff;font-weight:900;border-radius:99px;
+pointer-events:none;z-index:10;white-space:nowrap;
+transform:translateX(-50%) scale(0);opacity:0;
+transition:transform .2s cubic-bezier(.34,1.56,.64,1),opacity .2s;
 }
 #combo-badge{top:50%;background:linear-gradient(135deg,#c084fc,#818cf8);font-size:22px;padding:7px 20px;box-shadow:0 4px 20px rgba(192,132,252,.5)}
 #combo-badge.show{transform:translate(-50%,-50%) scale(1);opacity:1}
@@ -73,51 +74,43 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 #timer-flash{position:absolute;inset:0;pointer-events:none;z-index:5;background:rgba(255,30,30,0);transition:background .1s}
 #timer-flash.pulse{background:rgba(255,30,30,.12)}
 
-/* ── 하단 ── */
 #btm{padding:5px 12px 8px;flex-shrink:0;background:linear-gradient(0deg,#2d0f4e,#1a0a2e);border-top:1px solid rgba(192,132,252,.2);display:flex;gap:8px;align-items:center}
 #item-btns{display:flex;gap:6px;flex:1}
 .item-btn{
-  height:52px;flex:1;
-  background:rgba(192,132,252,.08);border:1.5px solid rgba(192,132,252,.18);border-radius:14px;
-  cursor:pointer;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
-  transition:transform .1s,background .15s;padding:3px 2px 2px;overflow:visible;
+height:52px;flex:1;
+background:rgba(192,132,252,.08);border:1.5px solid rgba(192,132,252,.18);border-radius:14px;
+cursor:pointer;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+transition:transform .1s,background .15s;padding:3px 2px 2px;overflow:visible;
 }
 .item-btn:active{transform:scale(.90);background:rgba(192,132,252,.22)}
 .item-btn.used{opacity:.35;pointer-events:none}
 .item-btn canvas{display:block;pointer-events:none;flex-shrink:0}
-.item-btn-label{font-size:8px;font-weight:900;color:var(--sub);line-height:1;margin-top:1px}
-.item-btn-badge{
-  position:absolute;top:2px;right:3px;
-  font-size:11px;line-height:1;pointer-events:none;
-}
-.item-btn-cnt{
-  position:absolute;bottom:2px;right:4px;
-  font-size:10px;font-weight:900;color:#fbbf24;line-height:1;
-}
-#pause-btn{width:44px;height:52px;flex-shrink:0;background:rgba(192,132,252,.1);border:1px solid rgba(192,132,252,.18);border-radius:13px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--purple);transition:transform .1s}
+.item-btn-label{font-size:8px;font-weight:900;color:var(–sub);line-height:1;margin-top:1px}
+.item-btn-badge{position:absolute;top:2px;right:3px;font-size:11px;line-height:1;pointer-events:none;}
+.item-btn-cnt{position:absolute;bottom:2px;right:4px;font-size:10px;font-weight:900;color:#fbbf24;line-height:1;}
+#pause-btn{width:44px;height:52px;flex-shrink:0;background:rgba(192,132,252,.1);border:1px solid rgba(192,132,252,.18);border-radius:13px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(–purple);transition:transform .1s}
 #pause-btn:active{transform:scale(.91)}
 
-/* ── 스플래시 (iOS 소리 활성화) ── */
 #splash{
-  position:absolute;inset:0;z-index:99;
-  background:linear-gradient(160deg,#1a0a2e,#0d0520);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:18px;
-  transition:opacity .4s;
+position:absolute;inset:0;z-index:99;
+background:linear-gradient(160deg,#1a0a2e,#0d0520);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:18px;
+transition:opacity .4s;
 }
 #splash.hide{opacity:0;pointer-events:none}
 #splash-animals{display:flex;gap:10px;margin-bottom:6px}
-#splash h1{font-size:28px;font-weight:900;color:var(--txt);text-align:center;line-height:1.2;pointer-events:none}
-#splash .splash-sub{font-size:13px;color:var(--sub);font-weight:700;pointer-events:none}
+#splash h1{font-size:28px;font-weight:900;color:var(–txt);text-align:center;line-height:1.2;pointer-events:none}
+#splash .splash-sub{font-size:13px;color:var(–sub);font-weight:700;pointer-events:none}
 #splash-btn{
-  margin-top:8px;padding:16px 44px;
-  background:linear-gradient(135deg,#c084fc,#818cf8);
-  border:none;border-radius:99px;
-  font-size:18px;font-weight:900;color:#fff;
-  font-family:'Nunito',sans-serif;cursor:pointer;
-  box-shadow:0 6px 28px rgba(192,132,252,.5);
-  animation:splashPulse 1.4s infinite alternate;
-  position:relative;z-index:100;
+margin-top:8px;padding:16px 44px;
+background:linear-gradient(135deg,#c084fc,#818cf8);
+border:none;border-radius:99px;
+font-size:18px;font-weight:900;color:#fff;
+font-family:‘Nunito’,sans-serif;cursor:pointer;
+box-shadow:0 6px 28px rgba(192,132,252,.5);
+animation:splashPulse 1.4s infinite alternate;
+position:relative;z-index:100;
 }
 @keyframes splashPulse{to{transform:scale(1.06);box-shadow:0 8px 36px rgba(192,132,252,.7)}}
 .overlay{position:absolute;inset:0;background:rgba(8,3,18,.78);display:flex;align-items:center;justify-content:center;z-index:30;opacity:0;pointer-events:none;transition:opacity .22s}
@@ -125,26 +118,28 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 .popup{background:linear-gradient(160deg,#2e1050,#180928);border:1px solid rgba(192,132,252,.28);border-radius:26px;padding:24px 20px 18px;width:300px;text-align:center;transform:scale(.86);transition:transform .26s cubic-bezier(.34,1.56,.64,1);box-shadow:0 24px 64px rgba(0,0,0,.65)}
 .overlay.on .popup{transform:scale(1)}
 .popup-icon{font-size:44px;margin-bottom:4px}
-.popup h2{font-size:21px;font-weight:900;color:var(--txt);margin-bottom:3px}
-.popup .sub{font-size:12px;color:var(--sub);margin-bottom:6px}
-.big-num{font-size:40px;font-weight:900;color:var(--purple);line-height:1;margin-bottom:12px}
+.popup h2{font-size:21px;font-weight:900;color:var(–txt);margin-bottom:3px}
+.popup .sub{font-size:12px;color:var(–sub);margin-bottom:6px}
+.big-num{font-size:40px;font-weight:900;color:var(–purple);line-height:1;margin-bottom:12px}
 .stat-row{display:flex;gap:8px;margin-bottom:12px}
 .stat{flex:1;background:rgba(192,132,252,.07);border-radius:12px;padding:8px 4px}
-.stat-l{font-size:9px;color:var(--sub);font-weight:700}
-.stat-v{font-size:16px;font-weight:900;color:var(--txt);margin-top:2px}
-.btn-p{width:100%;padding:12px;border:none;border-radius:16px;background:linear-gradient(135deg,#c084fc,#818cf8);color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:7px;box-shadow:0 4px 16px rgba(192,132,252,.35);transition:transform .1s}
+.stat-l{font-size:9px;color:var(–sub);font-weight:700}
+.stat-v{font-size:16px;font-weight:900;color:var(–txt);margin-top:2px}
+.btn-p{width:100%;padding:12px;border:none;border-radius:16px;background:linear-gradient(135deg,#c084fc,#818cf8);color:#fff;font-size:14px;font-weight:900;cursor:pointer;font-family:‘Nunito’,sans-serif;margin-bottom:7px;box-shadow:0 4px 16px rgba(192,132,252,.35);transition:transform .1s}
 .btn-p:active{transform:scale(.97)}
-.btn-s{width:100%;padding:9px;border:none;border-radius:12px;background:rgba(192,132,252,.1);color:var(--sub);font-size:12px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
-#nick-input{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid rgba(192,132,252,.28);background:rgba(192,132,252,.07);color:var(--txt);font-size:15px;font-weight:700;font-family:'Nunito',sans-serif;margin-bottom:10px;outline:none;text-align:center}
-#nick-input:focus{border-color:var(--purple)}
+.btn-p:disabled{opacity:.6;cursor:not-allowed}
+.btn-s{width:100%;padding:9px;border:none;border-radius:12px;background:rgba(192,132,252,.1);color:var(–sub);font-size:12px;font-weight:700;cursor:pointer;font-family:‘Nunito’,sans-serif}
+#nick-input{width:100%;padding:10px 12px;border-radius:12px;border:1.5px solid rgba(192,132,252,.28);background:rgba(192,132,252,.07);color:var(–txt);font-size:15px;font-weight:700;font-family:‘Nunito’,sans-serif;margin-bottom:10px;outline:none;text-align:center}
+#nick-input:focus{border-color:var(–purple)}
 #rank-list{text-align:left;margin-bottom:11px;max-height:230px;overflow-y:auto}
 .ri{display:flex;align-items:center;gap:8px;padding:6px 9px;border-radius:9px;margin-bottom:3px;background:rgba(192,132,252,.05)}
 .ri.me{background:rgba(192,132,252,.16);border:1px solid rgba(192,132,252,.28)}
-.rno{font-size:12px;font-weight:900;color:var(--sub);min-width:20px}
+.rno{font-size:12px;font-weight:900;color:var(–sub);min-width:20px}
 .rno.g{color:#fbbf24}.rno.s{color:#94a3b8}.rno.b{color:#cd7f32}
-.rname{flex:1;font-size:12px;font-weight:700;color:var(--txt)}
-.rscore{font-size:12px;font-weight:900;color:var(--purple)}
+.rname{flex:1;font-size:12px;font-weight:700;color:var(–txt)}
+.rscore{font-size:12px;font-weight:900;color:var(–purple)}
 </style>
+
 </head>
 <body>
 <div id="app">
@@ -176,7 +171,6 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
     <button id="pause-btn" onclick="togglePause()">⏸</button>
   </div>
 
-  <!-- 스플래시 — iOS AudioContext 활성화 -->
   <div id="splash">
     <div id="splash-animals">
       <canvas id="sp-dog" width="56" height="56"></canvas>
@@ -201,8 +195,8 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
         <div class="stat"><div class="stat-l">목표 달성</div><div class="stat-v" id="over-goal">미달</div></div>
       </div>
       <input id="nick-input" type="text" maxlength="8" placeholder="닉네임 (최대 8자)">
-      <button class="btn-p" onclick="submitScore()">🏆 점수 등록 & 랭킹</button>
-      <button class="btn-s" onclick="restart()">다시 시작</button>
+      <button class="btn-p" id="submit-score-btn" onclick="submitScore()">🏆 점수 등록 & 랭킹</button>
+      <button class="btn-s" id="over-restart-btn" onclick="restart()">다시 시작</button>
     </div>
   </div>
 
@@ -239,14 +233,8 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 </div>
 
 <script>
-// ══════════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════════
 const COLS=7, ROWS=8;
-
-// ── 동물 4종 고정 (곰 제거) ──
 const ANIMALS=['dog','cat','pig','raccoon'];
-
 const ACOL={
   dog:    {base:'#ffdfb2',ear:'#e8b56a',nose:'#7a3020',cheek:'#ffaa6a',hl:'rgba(255,255,255,.52)'},
   cat:    {base:'#b3d4ff',ear:'#7aaae8',nose:'#bb6688',cheek:'#8ebef0',hl:'rgba(255,255,255,.52)'},
@@ -257,15 +245,12 @@ const ACOL={
 const CCSS={dog:'#ffdfb2',cat:'#b3d4ff',raccoon:'#c0c0cc',pig:'#ffb3c6',bear:'#d4a574'};
 const ANIMAL_COLOR={dog:'#ffdfb2',cat:'#b3d4ff',raccoon:'#c0c0cc',pig:'#ffb3c6',bear:'#d4a574'};
 const ANIMAL_NAME={dog:'강아지',cat:'고양이',raccoon:'너구리',pig:'돼지',bear:'곰'};
-
-// ── 아이템 정의 (순서 고정: 폭탄→십자→리폼) ──
 const ITEM_DEFS=[
   {id:'bomb',  label:'폭탄', animalType:'dog',  badge:'💣'},
   {id:'cross', label:'십자', animalType:'cat',  badge:'✚'},
   {id:'reform',label:'리폼', animalType:'pig',  badge:'🔀'},
 ];
 
-// ── 30스테이지 — 4종 고정, ST1 동물당 20개, 시간 50초 고정 ──
 function makeLevels(){
   const lvs=[];
   for(let i=0;i<30;i++){
@@ -274,14 +259,9 @@ function makeLevels(){
     const timeLimit=33;
     const scoreGoal=Math.round(st*st*20+st*150+500);
     const pointPer=st<=10?10:st<=20?12:15;
-
-    // ST1=25개, ST5=35개, 스테이지당 +2.5개씩
     const base=25+Math.round((st-1)*2.5);
     const tgt={};
-    ANIMALS.forEach((a,idx)=>{
-      tgt[a]=Math.max(20, base-idx*2);
-    });
-
+    ANIMALS.forEach((a,idx)=>{ tgt[a]=Math.max(20, base-idx*2); });
     const itemSlots=st<=5?1:st<=15?2:3;
     lvs.push({st,types,timeLimit,scoreGoal,pointPer,tgt,itemSlots});
   }
@@ -290,9 +270,6 @@ function makeLevels(){
 const LEVELS=makeLevels();
 const RANK_KEY='abp_v6';
 
-// ══════════════════════════════════════════
-// CANVAS (메인 보드)
-// ══════════════════════════════════════════
 const canvas=document.getElementById('gc');
 const ctx=canvas.getContext('2d');
 let CELL=44;
@@ -303,11 +280,9 @@ function resizeCanvas(){
   canvas.width=CELL*COLS; canvas.height=CELL*ROWS;
 }
 
-// ══════════════════════════════════════════
-// 공통 동물 그리기 — tctx 인자로 어느 캔버스에나 사용
-// ══════════════════════════════════════════
 function drawAnimalCtx(tctx, cx, cy, type, sz, alpha=1, scale=1){
-  const C=ACOL[type], r=sz*.44*scale;
+  const C=ACOL[type]; if(!C) return;
+  const r=sz*.44*scale;
   tctx.save(); tctx.globalAlpha=alpha; tctx.translate(cx,cy);
   tctx.beginPath(); tctx.arc(0,0,r,0,Math.PI*2); tctx.fillStyle=C.base; tctx.fill();
 
@@ -362,7 +337,6 @@ function drawAnimalCtx(tctx, cx, cy, type, sz, alpha=1, scale=1){
   tctx.restore();
 }
 
-// 메인 보드용 래퍼 (전역 ctx 사용)
 function drawAnimal(cx,cy,type,sz,alpha=1,scale=1){
   drawAnimalCtx(ctx,cx,cy,type,sz,alpha,scale);
 }
@@ -386,9 +360,6 @@ function drawSpecial(cx,cy,special,sz){
   ctx.restore();
 }
 
-// ══════════════════════════════════════════
-// PARTICLES
-// ══════════════════════════════════════════
 let particles=[],flashAlpha=0,shake={x:0,y:0,f:0};
 
 function spawnParticles(cx,cy,color,count){
@@ -401,18 +372,12 @@ function spawnParticles(cx,cy,color,count){
   if(navigator.vibrate) navigator.vibrate(count>=5?[25,8,25]:[12]);
 }
 
-// ══════════════════════════════════════════
-// SOUND ENGINE — Web Audio API
-// ══════════════════════════════════════════
 let _ac=null;
 function getAC(){
   if(!_ac) _ac=new(window.AudioContext||window.webkitAudioContext)();
-  // iframe/브라우저 정책: 유저 인터랙션 후 resume
   if(_ac.state==='suspended') _ac.resume();
   return _ac;
 }
-
-// 기본 합성음 생성기
 function playTone({freq=440,freq2=freq,type='sine',attack=0.01,decay=0.12,vol=0.22,detune=0}={}){
   try{
     const ac=getAC();
@@ -431,8 +396,6 @@ function playTone({freq=440,freq2=freq,type='sine',attack=0.01,decay=0.12,vol=0.
     o.stop(ac.currentTime+attack+decay+0.05);
   }catch(e){}
 }
-
-// 노이즈 버스트 (터지는 느낌)
 function playNoise({dur=0.08,vol=0.15,freq=800,q=2}={}){
   try{
     const ac=getAC();
@@ -450,90 +413,18 @@ function playNoise({dur=0.08,vol=0.15,freq=800,q=2}={}){
     src.start(); src.stop(ac.currentTime+dur+0.02);
   }catch(e){}
 }
-
-// ── 동물별 특색 사운드 ──
 const ANIMAL_SOUND={
-  // 🐶 강아지: 명랑한 업스윕 "왈왈" 느낌
-  dog(combo){
-    const p=1+Math.min(combo,4)*0.04;
-    playTone({freq:520*p,freq2:780*p,type:'triangle',attack:0.01,decay:0.13,vol:0.2});
-    setTimeout(()=>playTone({freq:600*p,freq2:900*p,type:'triangle',attack:0.01,decay:0.1,vol:0.15}),60);
-  },
-  // 🐱 고양이: 부드럽고 높은 "냥" 느낌 — 사인파 + 피치 드롭
-  cat(combo){
-    const p=1+Math.min(combo,4)*0.04;
-    playTone({freq:900*p,freq2:680*p,type:'sine',attack:0.02,decay:0.18,vol:0.22});
-    playTone({freq:1100*p,freq2:800*p,type:'sine',attack:0.04,decay:0.14,vol:0.1,detune:7});
-  },
-  // 🐷 돼지: 둥글둥글 낮은 "꿀꿀" — 사각파 낮은음
-  pig(combo){
-    const p=1+Math.min(combo,4)*0.04;
-    playTone({freq:260*p,freq2:200*p,type:'square',attack:0.01,decay:0.1,vol:0.13});
-    playNoise({dur:0.07,vol:0.1,freq:400,q:1.5});
-    setTimeout(()=>playTone({freq:240*p,freq2:180*p,type:'square',attack:0.01,decay:0.09,vol:0.1}),55);
-  },
-  // 🦝 너구리: 통통 튀는 중간음 + 노이즈 믹스
-  raccoon(combo){
-    const p=1+Math.min(combo,4)*0.04;
-    playTone({freq:400*p,freq2:550*p,type:'sawtooth',attack:0.01,decay:0.11,vol:0.15});
-    playNoise({dur:0.06,vol:0.12,freq:600,q:3});
-  },
-  // 🐻 곰: 묵직하고 낮은 "우웅" — 낮은 사인파
-  bear(combo){
-    const p=1+Math.min(combo,4)*0.04;
-    playTone({freq:160*p,freq2:120*p,type:'sine',attack:0.02,decay:0.22,vol:0.28});
-    playTone({freq:200*p,freq2:150*p,type:'triangle',attack:0.01,decay:0.15,vol:0.14,detune:-5});
-  },
+  dog(combo){const p=1+Math.min(combo,4)*0.04;playTone({freq:520*p,freq2:780*p,type:'triangle',attack:0.01,decay:0.13,vol:0.2});setTimeout(()=>playTone({freq:600*p,freq2:900*p,type:'triangle',attack:0.01,decay:0.1,vol:0.15}),60);},
+  cat(combo){const p=1+Math.min(combo,4)*0.04;playTone({freq:900*p,freq2:680*p,type:'sine',attack:0.02,decay:0.18,vol:0.22});playTone({freq:1100*p,freq2:800*p,type:'sine',attack:0.04,decay:0.14,vol:0.1,detune:7});},
+  pig(combo){const p=1+Math.min(combo,4)*0.04;playTone({freq:260*p,freq2:200*p,type:'square',attack:0.01,decay:0.1,vol:0.13});playNoise({dur:0.07,vol:0.1,freq:400,q:1.5});setTimeout(()=>playTone({freq:240*p,freq2:180*p,type:'square',attack:0.01,decay:0.09,vol:0.1}),55);},
+  raccoon(combo){const p=1+Math.min(combo,4)*0.04;playTone({freq:400*p,freq2:550*p,type:'sawtooth',attack:0.01,decay:0.11,vol:0.15});playNoise({dur:0.06,vol:0.12,freq:600,q:3});},
+  bear(combo){const p=1+Math.min(combo,4)*0.04;playTone({freq:160*p,freq2:120*p,type:'sine',attack:0.02,decay:0.22,vol:0.28});playTone({freq:200*p,freq2:150*p,type:'triangle',attack:0.01,decay:0.15,vol:0.14,detune:-5});},
 };
-
-// 콤보 팡파레
-function playComboSound(combo){
-  try{
-    const ac=getAC();
-    const notes=[523,659,784,1047];
-    const pick=notes.slice(0,Math.min(combo,4));
-    pick.forEach((f,i)=>{
-      setTimeout(()=>playTone({freq:f,freq2:f*1.05,type:'sine',attack:0.01,decay:0.12,vol:0.18}),i*55);
-    });
-  }catch(e){}
-}
-
-// 클리어 팡파레
-function playClearSound(){
-  [523,659,784,1047,1319].forEach((f,i)=>{
-    setTimeout(()=>playTone({freq:f,type:'sine',attack:0.02,decay:0.2,vol:0.2}),i*80);
-  });
-}
-
-// 스왑 실패음
-function playFailSound(){
-  playTone({freq:220,freq2:180,type:'sawtooth',attack:0.01,decay:0.1,vol:0.1});
-}
-
-// 💣 폭탄 — 두탁한 폭발음
-function playBombSound(){
-  try{
-    // 저음 쿵
-    playTone({freq:80,freq2:40,type:'sine',attack:0.005,decay:0.3,vol:0.35});
-    // 노이즈 폭발
-    playNoise({dur:0.25,vol:0.3,freq:300,q:0.8});
-    // 고음 섬광
-    setTimeout(()=>playTone({freq:900,freq2:200,type:'sawtooth',attack:0.005,decay:0.15,vol:0.12}),30);
-    if(navigator.vibrate) navigator.vibrate([60,20,40]);
-  }catch(e){}
-}
-
-// ✨ 십자 — 쭉 뻗는 레이저 사운드
-function playCrossSound(){
-  try{
-    // 상승 스윕
-    playTone({freq:300,freq2:1200,type:'sawtooth',attack:0.01,decay:0.22,vol:0.18});
-    // 반짝이는 고음
-    setTimeout(()=>playTone({freq:1400,freq2:800,type:'sine',attack:0.01,decay:0.15,vol:0.14}),60);
-    setTimeout(()=>playNoise({dur:0.1,vol:0.1,freq:1000,q:4}),80);
-    if(navigator.vibrate) navigator.vibrate([20,10,20,10,20]);
-  }catch(e){}
-}
+function playComboSound(combo){try{const ac=getAC();const notes=[523,659,784,1047];const pick=notes.slice(0,Math.min(combo,4));pick.forEach((f,i)=>{setTimeout(()=>playTone({freq:f,freq2:f*1.05,type:'sine',attack:0.01,decay:0.12,vol:0.18}),i*55);});}catch(e){}}
+function playClearSound(){[523,659,784,1047,1319].forEach((f,i)=>{setTimeout(()=>playTone({freq:f,type:'sine',attack:0.02,decay:0.2,vol:0.2}),i*80);});}
+function playFailSound(){playTone({freq:220,freq2:180,type:'sawtooth',attack:0.01,decay:0.1,vol:0.1});}
+function playBombSound(){try{playTone({freq:80,freq2:40,type:'sine',attack:0.005,decay:0.3,vol:0.35});playNoise({dur:0.25,vol:0.3,freq:300,q:0.8});setTimeout(()=>playTone({freq:900,freq2:200,type:'sawtooth',attack:0.005,decay:0.15,vol:0.12}),30);if(navigator.vibrate)navigator.vibrate([60,20,40]);}catch(e){}}
+function playCrossSound(){try{playTone({freq:300,freq2:1200,type:'sawtooth',attack:0.01,decay:0.22,vol:0.18});setTimeout(()=>playTone({freq:1400,freq2:800,type:'sine',attack:0.01,decay:0.15,vol:0.14}),60);setTimeout(()=>playNoise({dur:0.1,vol:0.1,freq:1000,q:4}),80);if(navigator.vibrate)navigator.vibrate([20,10,20,10,20]);}catch(e){}}
 
 function updateParticles(dt){
   particles.forEach(p=>{p.x+=p.vx*dt*.055;p.y+=p.vy*dt*.055;p.vy+=.16;p.life-=p.decay;p.sz*=.974;});
@@ -542,7 +433,6 @@ function updateParticles(dt){
   if(shake.f>0){shake.x=(Math.random()-.5)*shake.f*1.6;shake.y=(Math.random()-.5)*shake.f;shake.f--;}
   else{shake.x=0;shake.y=0;}
 }
-
 function renderParticles(){
   particles.forEach(p=>{
     ctx.save(); ctx.globalAlpha=Math.max(0,p.life); ctx.fillStyle=p.color; ctx.translate(p.x,p.y);
@@ -556,9 +446,6 @@ function renderParticles(){
   if(flashAlpha>0){ctx.save();ctx.globalAlpha=flashAlpha;ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.restore();}
 }
 
-// ══════════════════════════════════════════
-// GAME STATE
-// ══════════════════════════════════════════
 let G={};
 let popAnims=[],swapAnim=null,chaining=false;
 let timerFlashInterval=null,winTriggered=false;
@@ -573,6 +460,7 @@ function initState(lv){
   };
   popAnims=[];swapAnim=null;chaining=false;particles=[];
   flashAlpha=0;shake={x:0,y:0,f:0};winTriggered=false;
+  timerWarnSent=false;  // ★ FIX: 타이머 경고 플래그 리셋
   clearTimerFlash();
   buildTgtPanel();
   buildItemButtons();
@@ -591,55 +479,37 @@ function makeGrid(types){
   return g;
 }
 
-// ══════════════════════════════════════════
-// 아이템 버튼 — 동물 캐릭터 캔버스로 직접 그리기
-// ══════════════════════════════════════════
 function buildItemButtons(){
   const wrap=document.getElementById('item-btns');
   wrap.innerHTML='';
-
   G.items.forEach((item,idx)=>{
     const btn=document.createElement('button');
     btn.className='item-btn';
     btn.id='item-btn-'+idx;
     btn.onclick=()=>useItem(idx);
-
-    // ★ 동물 캐릭터 캔버스
     const SZ=38;
     const bc=document.createElement('canvas');
     bc.width=SZ; bc.height=SZ;
     const bctx=bc.getContext('2d');
-
-    // 반투명 원형 배경
     bctx.beginPath();
     bctx.arc(SZ/2,SZ/2,SZ/2-1,0,Math.PI*2);
     bctx.fillStyle='rgba(0,0,0,.2)';
     bctx.fill();
-
-    // 동물 그리기 (drawAnimalCtx 사용 — 전역 ctx 안 씀!)
     drawAnimalCtx(bctx, SZ/2, SZ/2, item.animalType, SZ);
-
     btn.appendChild(bc);
-
-    // 아이템 이름 라벨
     const lbl=document.createElement('div');
     lbl.className='item-btn-label';
     lbl.textContent=item.label;
     btn.appendChild(lbl);
-
-    // 아이템 기능 뱃지 (우상단)
     const badge=document.createElement('div');
     badge.className='item-btn-badge';
     badge.textContent=item.badge;
     btn.appendChild(badge);
-
-    // 잔여 횟수 (우하단)
     const cnt=document.createElement('div');
     cnt.className='item-btn-cnt';
     cnt.id='item-cnt-'+idx;
     cnt.textContent=item.count>0?item.count:'';
     btn.appendChild(cnt);
-
     if(item.count<=0) btn.classList.add('used');
     wrap.appendChild(btn);
   });
@@ -661,7 +531,6 @@ async function useItem(idx){
   if(!item||item.count<=0) return;
   item.count--;
   updateItemButtons();
-
   if(item.id==='bomb'){
     let best=[],bestN=0;
     for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){const g=getGroup(r,c);if(g.length>bestN){best=g;bestN=g.length;}}
@@ -681,9 +550,6 @@ async function useItem(idx){
   updateUI();
 }
 
-// ══════════════════════════════════════════
-// FLOOD FILL
-// ══════════════════════════════════════════
 function groupIn(grid,r,c){
   if(!grid[r]||!grid[r][c]||grid[r][c].special) return [];
   const type=grid[r][c].type,vis=new Set(),res=[];
@@ -698,9 +564,6 @@ function groupIn(grid,r,c){
 }
 const getGroup=(r,c)=>groupIn(G.grid,r,c);
 
-// ══════════════════════════════════════════
-// POP
-// ══════════════════════════════════════════
 function popCells(cells,fromInteract=false){
   if(!cells.length) return Promise.resolve();
   const type=G.grid[cells[0].r][cells[0].c]?.type;
@@ -708,17 +571,13 @@ function popCells(cells,fromInteract=false){
   const cfg=LEVELS[G.lv];
   const mult=n>=8?2.5:n>=6?2.0:n>=4?1.5:1.0;
   const pts=Math.round(n*cfg.pointPer*mult);
-
   G.score+=pts; G.pops+=n;
   if(fromInteract){G.combo++;G.maxCombo=Math.max(G.maxCombo,G.combo);}
-  // ★ 셀별 타입으로 정확히 차감
   cells.forEach(({r,c})=>{
     const t=G.grid[r][c]?.type;
     if(t&&G.remaining[t]!==undefined) G.remaining[t]=Math.max(0,G.remaining[t]-1);
   });
-
   const isAllClear=fromInteract&&n>=6;
-
   let special=null,specialFinalR=-1,specialFinalC=-1;
   if(fromInteract&&!isAllClear){
     if(n>=5) special='cross';
@@ -732,19 +591,16 @@ function popCells(cells,fromInteract=false){
       specialFinalR=survivorsAbove; specialFinalC=mc;
     }
   }
-
   cells.forEach(({r,c})=>{
     spawnParticles(c*CELL+CELL/2,r*CELL+CELL/2,CCSS[type]||'#fff',n);
     popAnims.push({r,c,t:0});
   });
-  // ★ 동물별 팝 사운드
   if(ANIMAL_SOUND[type]) ANIMAL_SOUND[type](G.combo);
   const fc=cells[Math.floor(cells.length/2)];
   addFloat('+'+pts,fc.c*CELL+CELL/2,fc.r*CELL);
   if(G.combo>=2){ showCombo(G.combo); playComboSound(G.combo); }
   if(isAllClear) showAllClear();
   updateUI();
-
   return new Promise(res=>{
     setTimeout(async()=>{
       if(isAllClear){
@@ -794,7 +650,6 @@ function doGravity(){
     }
   }
 }
-
 function doRefill(){
   const types=LEVELS[G.lv].types;
   for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
@@ -806,7 +661,6 @@ function doRefill(){
   }
   breakGroups();
 }
-
 function breakGroups(){
   const types=LEVELS[G.lv].types;
   let changed=true,pass=0;
@@ -828,7 +682,6 @@ function breakGroups(){
     }
   }
 }
-
 async function autoChain(){
   if(chaining) return;
   chaining=true;
@@ -847,19 +700,14 @@ async function autoChain(){
   chaining=false;
   checkWin();
 }
-
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
-// ══════════════════════════════════════════
-// SPECIAL ACTIVATE
-// ══════════════════════════════════════════
 async function activateSpecial(r,c){
   const cell=G.grid[r][c];
   if(!cell?.special) return;
   if(cell.special==='bomb') await activateBomb3x3(r,c);
   else await activateCross(r,c);
 }
-
 async function activateBomb3x3(r,c){
   const tgts=[];
   for(let dr=-1;dr<=1;dr++) for(let dc=-1;dc<=1;dc++){
@@ -868,14 +716,12 @@ async function activateBomb3x3(r,c){
   }
   await _blastTgts(tgts,r,c,'💥');
 }
-
 async function activateCross(r,c){
   const tgts=[];
   for(let i=0;i<COLS;i++) if(G.grid[r][i]) tgts.push({r,c:i});
   for(let i=0;i<ROWS;i++) if(G.grid[i][c]&&!tgts.find(t=>t.r===i&&t.c===c)) tgts.push({r:i,c});
   await _blastTgts(tgts,r,c,'✨');
 }
-
 async function _blastTgts(tgts,r,c,icon){
   if(!tgts.length) return;
   const pts=tgts.length*LEVELS[G.lv].pointPer*2;
@@ -891,11 +737,8 @@ async function _blastTgts(tgts,r,c,icon){
   if(G.combo>=2){ showCombo(G.combo); playComboSound(G.combo); }
   flashAlpha=.38;shake.f=9;
   if(navigator.vibrate) navigator.vibrate([30,10,30,10,30]);
-
-  // ★ 폭탄/십자 전용 사운드
   if(icon==='💥') playBombSound();
   else if(icon==='✨') playCrossSound();
-
   updateUI();
   await sleep(120);
   tgts.forEach(({r,c})=>{G.grid[r][c]=null;});
@@ -905,24 +748,18 @@ async function _blastTgts(tgts,r,c,icon){
   await autoChain();
 }
 
-// ══════════════════════════════════════════
-// INPUT
-// ══════════════════════════════════════════
 let drag={on:false,r:-1,c:-1};
-
 function evPos(e){
   const rect=canvas.getBoundingClientRect(),pt=e.touches?e.touches[0]:e;
   return{c:Math.floor((pt.clientX-rect.left)*canvas.width/rect.width/CELL),
          r:Math.floor((pt.clientY-rect.top)*canvas.height/rect.height/CELL)};
 }
-
 canvas.addEventListener('mousedown',onDown);
 canvas.addEventListener('touchstart',onDown,{passive:false});
 canvas.addEventListener('mousemove',onMove);
 canvas.addEventListener('touchmove',onMove,{passive:false});
 canvas.addEventListener('mouseup',onUp);
 canvas.addEventListener('touchend',onUp,{passive:false});
-
 function onDown(e){
   e.preventDefault();
   if(G.paused||G.over||chaining) return;
@@ -946,7 +783,6 @@ async function onUp(e){
   const{r,c}=drag;drag.on=false;
   if(r>=0&&r<ROWS&&c>=0&&c<COLS&&G.grid[r][c]?.special) await activateSpecial(r,c);
 }
-
 async function trySwap(r1,c1,r2,c2){
   const a=G.grid[r1][c1],b=G.grid[r2][c2];
   if(!a||!b) return;
@@ -971,14 +807,11 @@ async function trySwap(r1,c1,r2,c2){
     G.grid[r1][c1]=a;G.grid[r2][c2]=b;
     swapAnim={r1,c1,r2,c2,t:0};
     G.combo=0;clearTimeout(comboResetTimer);
-    playFailSound(); // ★ 스왑 실패음
+    playFailSound();
   }
   updateUI();
 }
 
-// ══════════════════════════════════════════
-// UI
-// ══════════════════════════════════════════
 function buildTgtPanel(){
   const cfg=LEVELS[G.lv];
   const grid=document.getElementById('tgt-grid');
@@ -1001,18 +834,14 @@ function buildTgtPanel(){
       <div class="tgt-check">✅</div>
     </div>
   `).join('');
-
-  // ★ 목표 패널에도 동물 캐릭터 캔버스로 직접 그리기
   Object.keys(cfg.tgt).forEach(k=>{
     const bc=document.getElementById('tgt-canvas-'+k);
     if(!bc) return;
-    const SZ=28;
-    bc.width=SZ;bc.height=SZ;
+    const SZ=28;bc.width=SZ;bc.height=SZ;
     const bctx=bc.getContext('2d');
     drawAnimalCtx(bctx,SZ/2,SZ/2,k,SZ);
   });
 }
-
 function updateTgtPanel(){
   const cfg=LEVELS[G.lv];
   let doneCount=0;
@@ -1034,7 +863,6 @@ function updateTgtPanel(){
   });
   document.getElementById('tgt-panel-summary').textContent=`${doneCount}/${Object.keys(cfg.tgt).length} 완료`;
 }
-
 function updateUI(){
   document.getElementById('score-val').textContent=G.score.toLocaleString();
   document.getElementById('lv-badge').textContent='ST.'+(G.lv+1);
@@ -1062,7 +890,6 @@ function updateTimerUI(){
     el.className='hdr-val';flash.classList.remove('pulse');timerWarnSent=false;
   }
 }
-
 function clearTimerFlash(){
   if(timerFlashInterval){clearInterval(timerFlashInterval);timerFlashInterval=null;}
   document.getElementById('timer-flash').classList.remove('pulse');
@@ -1080,7 +907,7 @@ function addFloat(text,x,y){
 }
 
 let comboTimer,comboResetTimer=null;
-const COMBO_WINDOW=600; // 더 짧게 — 콤보 유지 어렵게
+const COMBO_WINDOW=600;
 function armComboReset(){
   clearTimeout(comboResetTimer);
   comboResetTimer=setTimeout(()=>{if(G.combo>0){G.combo=0;document.getElementById('combo-badge').classList.remove('show');}},COMBO_WINDOW);
@@ -1106,17 +933,15 @@ let stageClearTimer;
 function showStageClearToast(){
   const el=document.getElementById('stage-clear-toast');
   el.textContent='🎉 스테이지 클리어!';el.classList.add('show');
-  playClearSound(); // ★ 클리어 팡파레
+  playClearSound();
   clearTimeout(stageClearTimer);stageClearTimer=setTimeout(()=>el.classList.remove('show'),900);
 }
 
-// ══════════════════════════════════════════
-// GAME FLOW
-// ══════════════════════════════════════════
 function checkWin(){
   if(winTriggered||G.over) return;
   if(Object.values(G.remaining).every(v=>v<=0)){
     winTriggered=true;
+    G.paused=true; // ★ FIX: 클리어 후 타이머 정지
     showStageClearToast();
     setTimeout(showClear,900);
   }
@@ -1133,7 +958,10 @@ function showClear(){
 }
 
 function showGameOver(){
-  if(G.over) return;G.over=true;clearTimerFlash();
+  // ★ FIX: 중복 호출 완벽 차단
+  if(G.over) return;
+  G.over=true;
+  clearTimerFlash();
   const cfg=LEVELS[G.lv];
   const goalMet=G.score>=cfg.scoreGoal;
   document.getElementById('over-score').textContent=G.score.toLocaleString();
@@ -1145,6 +973,10 @@ function showGameOver(){
   document.getElementById('over-title').textContent=goalMet?'목표 달성!':'시간 종료!';
   document.getElementById('over-sub').textContent=goalMet?`목표 ${cfg.scoreGoal.toLocaleString()}점 달성!`:'아쉽지만 다음엔!';
   document.getElementById('nick-input').value='';
+  // ★ FIX: 버튼 상태 초기화 (이전에 disabled 됐을 경우 대비)
+  const submitBtn=document.getElementById('submit-score-btn');
+  submitBtn.textContent='🏆 점수 등록 & 랭킹';
+  submitBtn.disabled=false;
   show('ov-over');
 }
 
@@ -1154,14 +986,39 @@ function nextLevel(){
   initState(next);updateUI();
 }
 
+// ★★★ FIX: restart() 완전 재작성 — 모든 오버레이 닫고 상태 완전 초기화
 function restart(){
-  ['ov-over','ov-rank','ov-clear','ov-pause'].forEach(hide);
+  // 모든 오버레이 닫기
+  ['ov-over','ov-rank','ov-clear','ov-pause'].forEach(id=>{
+    document.getElementById(id).classList.remove('on');
+  });
   document.getElementById('pause-btn').textContent='⏸';
-  clearTimerFlash();initState(0);updateUI();
+
+  // 모든 타이머/인터벌 정리
+  clearTimerFlash();
+  clearTimeout(comboResetTimer);
+  clearTimeout(comboTimer);
+  clearTimeout(allClearTimer);
+  clearTimeout(warnTimer);
+  clearTimeout(stageClearTimer);
+
+  // 배지 숨기기
+  ['combo-badge','allclear-badge','score-warn','stage-clear-toast'].forEach(id=>{
+    document.getElementById(id).classList.remove('show');
+  });
+
+  // chaining 강제 해제 (async 중에 restart 눌렀을 때 대비)
+  chaining=false;
+  drag={on:false,r:-1,c:-1};
+
+  // 게임 상태 초기화
+  initState(0);
+  updateUI();
 }
 
 function togglePause(){
-  if(G.over) return;G.paused=!G.paused;
+  if(G.over) return;
+  G.paused=!G.paused;
   document.getElementById('pause-btn').textContent=G.paused?'▶':'⏸';
   G.paused?show('ov-pause'):hide('ov-pause');
 }
@@ -1170,86 +1027,102 @@ const show=id=>document.getElementById(id).classList.add('on');
 const hide=id=>document.getElementById(id).classList.remove('on');
 
 // ══════════════════════════════════════════
-// RANKING
+// ★★★ RANKING — 완전 재작성 (버그 수정)
 // ══════════════════════════════════════════
-// ══════════════════════════════════════════
-// RANKING — JSONBin.io 클라우드 저장
-// ══════════════════════════════════════════
-// ★ JSONBin.io 키 — 본인 키로 교체
-const JSONBIN_KEY = '$2a$10$3dh1cliWs7QNyduKM0pn2O8W7KWUetuS3YayAuT7J9bZR3xzKIl/6';
-const JSONBIN_BIN = '69fbd3ec250b1311c3141121';
-
-const BIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN}`;
+const JSONBIN_KEY='$2a$10$3dh1cliWs7QNyduKM0pn2O8W7KWUetuS3YayAuT7J9bZR3xzKIl/6';
+const JSONBIN_BIN='69fbd3ec250b1311c3141121';
+const BIN_URL=`https://api.jsonbin.io/v3/b/${JSONBIN_BIN}`;
 
 async function loadRank(){
   try{
     const res=await fetch(`${BIN_URL}/latest`,{
-      headers:{'X-Master-Key':JSONBIN_KEY,'X-Bin-Meta':false}
+      headers:{'X-Master-Key':JSONBIN_KEY,'X-Bin-Meta':'false'}
     });
-    if(!res.ok) throw new Error();
+    if(!res.ok) throw new Error('fetch fail: '+res.status);
     const data=await res.json();
-    return Array.isArray(data)?data:[];
-  }catch{
-    // 네트워크 실패 시 로컬 캐시 사용
+    // JSONBin은 {record: [...]} 형태로 반환함
+    const list=data.record ?? data;
+    return Array.isArray(list)?list:[];
+  }catch(e){
+    console.warn('loadRank 실패, 로컬 사용:', e.message);
     try{return JSON.parse(localStorage.getItem(RANK_KEY)||'[]');}catch{return[];}
   }
 }
 
 async function saveRank(list){
   try{
-    await fetch(BIN_URL,{
+    const res=await fetch(BIN_URL,{
       method:'PUT',
       headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
       body:JSON.stringify(list)
     });
-    // 로컬에도 캐시
-    localStorage.setItem(RANK_KEY,JSON.stringify(list));
-  }catch{
-    localStorage.setItem(RANK_KEY,JSON.stringify(list));
+    if(!res.ok) throw new Error('save fail: '+res.status);
+  }catch(e){
+    console.warn('saveRank 실패, 로컬만 저장:', e.message);
   }
+  // 로컬에도 항상 캐시
+  try{localStorage.setItem(RANK_KEY,JSON.stringify(list));}catch{}
 }
 
+// ★★★ FIX: submitScore — nick/score 변수 캡처, finally로 버튼 항상 복구
 async function submitScore(){
+  // ★ 점수와 닉네임을 즉시 캡처 (비동기 중에 G가 바뀔 수 있으므로)
+  const capturedScore=G.score;
+  const capturedLv=G.lv+1;
   const nick=(document.getElementById('nick-input').value.trim()||'익명').slice(0,8);
-  const btn=document.querySelector('#ov-over .btn-p');
-  btn.textContent='저장 중...';
-  btn.disabled=true;
 
+  const submitBtn=document.getElementById('submit-score-btn');
+  submitBtn.textContent='저장 중... ⏳';
+  submitBtn.disabled=true;
+
+  let list=[];
   try{
     // 1. 기존 랭킹 불러오기
-    let list=await loadRank();
+    list=await loadRank();
 
     // 2. 새 점수 추가
-    list.push({nick,score:G.score,st:G.lv+1,date:new Date().toLocaleDateString('ko-KR')});
+    list.push({nick,score:capturedScore,st:capturedLv,date:new Date().toLocaleDateString('ko-KR')});
     list.sort((a,b)=>b.score-a.score);
     list=list.slice(0,30);
 
-    // 3. 저장
+    // 3. 저장 (실패해도 계속)
     await saveRank(list);
-
-    // 4. 랭킹 팝업 표시
-    hide('ov-over');
-    renderRank(list,nick,G.score);
-    show('ov-rank');
-  }catch(err){
-    // 네트워크 실패해도 로컬 데이터로 랭킹 보여주기
-    const local=JSON.parse(localStorage.getItem(RANK_KEY)||'[]');
-    hide('ov-over');
-    renderRank(local,nick,G.score);
-    show('ov-rank');
+  }catch(e){
+    console.warn('submitScore 에러:', e);
+    // 실패 시 로컬 데이터로 fallback
+    try{list=JSON.parse(localStorage.getItem(RANK_KEY)||'[]');}catch{list=[];}
+    // 현재 점수라도 추가
+    if(!list.find(x=>x.score===capturedScore&&x.nick===nick)){
+      list.push({nick,score:capturedScore,st:capturedLv,date:new Date().toLocaleDateString('ko-KR')});
+      list.sort((a,b)=>b.score-a.score);
+      list=list.slice(0,30);
+    }
   }finally{
-    btn.textContent='🏆 점수 등록 & 랭킹';
-    btn.disabled=false;
+    // ★ 항상 버튼 복구 (성공/실패 관계없이)
+    submitBtn.textContent='🏆 점수 등록 & 랭킹';
+    submitBtn.disabled=false;
   }
+
+  // 4. 랭킹 팝업 표시 (try 밖에서 — 항상 실행)
+  hide('ov-over');
+  renderRank(list, nick, capturedScore);
+  show('ov-rank');
 }
 
 function renderRank(list,myNick,myScore){
   const el=document.getElementById('rank-list');
-  if(!list.length){el.innerHTML='<div style="text-align:center;color:var(--sub);padding:18px">아직 기록이 없어요!</div>';return;}
+  if(!list||!list.length){
+    el.innerHTML='<div style="text-align:center;color:var(--sub);padding:18px">아직 기록이 없어요!<br><span style="font-size:11px">네트워크를 확인해주세요</span></div>';
+    return;
+  }
   const mc=['g','s','b'];
   el.innerHTML=list.map((item,i)=>{
     const me=item.nick===myNick&&item.score===myScore;
-    return`<div class="ri${me?' me':''}"><div class="rno ${mc[i]||''}">${i+1}</div><div class="rname">${item.nick}<span style="font-size:9px;color:var(--sub);margin-left:4px">ST${item.st||'?'}</span></div><div class="rscore">${item.score.toLocaleString()}</div></div>`;
+    return`<div class="ri${me?' me':''}">
+      <div class="rno ${mc[i]||''}">${i+1}</div>
+      <div class="rname">${item.nick||'익명'}<span style="font-size:9px;color:var(--sub);margin-left:4px">ST${item.st||'?'}</span></div>
+      <div class="rscore">${(item.score||0).toLocaleString()}</div>
+    </div>`;
   }).join('');
 }
 
@@ -1282,9 +1155,6 @@ function render(){
   renderParticles();
 }
 
-// ══════════════════════════════════════════
-// LOOP
-// ══════════════════════════════════════════
 let last=0;
 function loop(ts){
   const dt=Math.min(ts-last,80);last=ts;
@@ -1301,15 +1171,10 @@ function loop(ts){
   requestAnimationFrame(loop);
 }
 
-// ══════════════════════════════════════════
-// START
-// ══════════════════════════════════════════
 function startGame(){
-  // ★ iOS Safari 오디오 완전 언락 — 유저 제스처 안에서 실행
   try{
     if(!_ac) _ac=new(window.AudioContext||window.webkitAudioContext)();
     _ac.resume().then(()=>{
-      // 무음 버퍼 재생으로 iOS 잠금 해제
       const buf=_ac.createBuffer(1,_ac.sampleRate*0.1,_ac.sampleRate);
       const src=_ac.createBufferSource();
       src.buffer=buf;
@@ -1317,23 +1182,19 @@ function startGame(){
       g.gain.value=0.001;
       src.connect(g); g.connect(_ac.destination);
       src.start(0);
-      // 짧은 테스트 비프
       setTimeout(()=>playTone({freq:880,type:'sine',attack:0.01,decay:0.08,vol:0.15}),100);
     });
   }catch(e){}
-
   const splash=document.getElementById('splash');
   splash.classList.add('hide');
   setTimeout(()=>splash.style.display='none',400);
 }
 
-// 스플래시 버튼 이벤트 — onclick 대신 addEventListener 사용
 document.getElementById('splash-btn').addEventListener('click', startGame);
 document.getElementById('splash-btn').addEventListener('touchend', function(e){
   e.preventDefault(); startGame();
-}, {passive:false});
+},{passive:false});
 
-// 스플래시 동물 그리기
 ['dog','cat','pig','raccoon'].forEach(type=>{
   const bc=document.getElementById('sp-'+type);
   if(!bc) return;
@@ -1347,5 +1208,6 @@ initState(0);
 updateUI();
 requestAnimationFrame(loop);
 </script>
+
 </body>
 </html>
