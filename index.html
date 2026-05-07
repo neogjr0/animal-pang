@@ -265,26 +265,25 @@ const ITEM_DEFS=[
   {id:'reform',label:'리폼', animalType:'pig',  badge:'🔀'},
 ];
 
-// ── 30스테이지 — 4종 고정, 균형잡힌 난이도 ──
-// 시간: ST1=60초 → 점진적 감소, 최소 30초
-// 목표: ST1 각 8개 → 스테이지당 +1~2개씩 완만하게 증가
-// ST13부터 난이도 급격히 올리지 않음
+// ── 30스테이지 — 4종 고정, ST1 기준 동물당 8개, 시간 62초 고정 ──
 function makeLevels(){
   const lvs=[];
   for(let i=0;i<30;i++){
     const st=i+1;
-    const types = 4; // ★ 항상 4종 고정
-    const timeLimit = Math.max(30, Math.round(60 - (st-1)*1.0));
-    const scoreGoal = Math.round(st*st*18 + st*120 + 400);
-    const pointPer  = st<=10?10 : st<=20?13:16;
+    const types=4;
+    const timeLimit=62; // 시간 전 스테이지 고정
+    const scoreGoal=Math.round(st*st*14+st*100+300);
+    const pointPer=st<=12?10:st<=22?12:14;
 
-    // 목표 수: 완만하게 증가 (ST1: 각 8개, ST30: 각 22개)
-    const base = 7 + Math.round(st*0.5);
+    // 목표 수: ST1=8개 기준, 스테이지당 약 0.3개씩 완만하게 증가
+    // ST1→8, ST10→11, ST20→14, ST30→17
+    const base=8+Math.round((st-1)*0.3);
     const tgt={};
     ANIMALS.forEach((a,idx)=>{
-      tgt[a]=Math.max(6, base - idx);
+      tgt[a]=Math.max(6, base-idx);
     });
-    const itemSlots = st<=5?1 : st<=15?2 : 3;
+
+    const itemSlots=st<=5?1:st<=15?2:3;
     lvs.push({st,types,timeLimit,scoreGoal,pointPer,tgt,itemSlots});
   }
   return lvs;
