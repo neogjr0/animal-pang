@@ -1082,7 +1082,7 @@ async function submitScore(){
 
     // 2. 새 점수 추가
     list.push({nick,score:capturedScore,st:capturedLv,date:new Date().toLocaleDateString('ko-KR')});
-    list.sort((a,b)=>b.score-a.score);
+    list.sort((a,b)=>(b.st||0)-(a.st||0)||b.score-a.score);
     list=list.slice(0,30);
 
     // 3. 저장 (실패해도 계속)
@@ -1094,7 +1094,7 @@ async function submitScore(){
     // 현재 점수라도 추가
     if(!list.find(x=>x.score===capturedScore&&x.nick===nick)){
       list.push({nick,score:capturedScore,st:capturedLv,date:new Date().toLocaleDateString('ko-KR')});
-      list.sort((a,b)=>b.score-a.score);
+      list.sort((a,b)=>(b.st||0)-(a.st||0)||b.score-a.score);
       list=list.slice(0,30);
     }
   }finally{
