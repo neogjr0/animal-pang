@@ -265,22 +265,22 @@ const ITEM_DEFS=[
   {id:'reform',label:'리폼', animalType:'pig',  badge:'🔀'},
 ];
 
-// ── 30스테이지 — 4종 고정, ST1 기준 동물당 8개, 시간 62초 고정 ──
+// ── 30스테이지 — 4종 고정, ST1 동물당 20개, 시간 50초 고정 ──
 function makeLevels(){
   const lvs=[];
   for(let i=0;i<30;i++){
     const st=i+1;
     const types=4;
-    const timeLimit=62; // 시간 전 스테이지 고정
-    const scoreGoal=Math.round(st*st*14+st*100+300);
-    const pointPer=st<=12?10:st<=22?12:14;
+    const timeLimit=50; // 전 스테이지 50초 고정
+    const scoreGoal=Math.round(st*st*20+st*150+500);
+    const pointPer=st<=10?10:st<=20?12:15;
 
-    // 목표 수: ST1=8개 기준, 스테이지당 약 0.3개씩 완만하게 증가
-    // ST1→8, ST10→11, ST20→14, ST30→17
-    const base=8+Math.round((st-1)*0.3);
+    // ST1=20개, 스테이지당 +1.2개씩 증가
+    // ST1→20, ST10→31, ST20→43, ST30→55
+    const base=20+Math.round((st-1)*1.2);
     const tgt={};
     ANIMALS.forEach((a,idx)=>{
-      tgt[a]=Math.max(6, base-idx);
+      tgt[a]=Math.max(15, base-idx*2);
     });
 
     const itemSlots=st<=5?1:st<=15?2:3;
