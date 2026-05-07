@@ -102,13 +102,13 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
   position:absolute;inset:0;z-index:99;
   background:linear-gradient(160deg,#1a0a2e,#0d0520);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:18px;cursor:pointer;
+  gap:18px;
   transition:opacity .4s;
 }
 #splash.hide{opacity:0;pointer-events:none}
 #splash-animals{display:flex;gap:10px;margin-bottom:6px}
-#splash h1{font-size:28px;font-weight:900;color:var(--txt);text-align:center;line-height:1.2}
-#splash .splash-sub{font-size:13px;color:var(--sub);font-weight:700}
+#splash h1{font-size:28px;font-weight:900;color:var(--txt);text-align:center;line-height:1.2;pointer-events:none}
+#splash .splash-sub{font-size:13px;color:var(--sub);font-weight:700;pointer-events:none}
 #splash-btn{
   margin-top:8px;padding:16px 44px;
   background:linear-gradient(135deg,#c084fc,#818cf8);
@@ -117,6 +117,7 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
   font-family:'Nunito',sans-serif;cursor:pointer;
   box-shadow:0 6px 28px rgba(192,132,252,.5);
   animation:splashPulse 1.4s infinite alternate;
+  position:relative;z-index:100;
 }
 @keyframes splashPulse{to{transform:scale(1.06);box-shadow:0 8px 36px rgba(192,132,252,.7)}}
 .overlay{position:absolute;inset:0;background:rgba(8,3,18,.78);display:flex;align-items:center;justify-content:center;z-index:30;opacity:0;pointer-events:none;transition:opacity .22s}
@@ -170,23 +171,22 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
     <div id="timer-flash"></div>
   </div>
 
+  <div id="btm">
+    <div id="item-btns"></div>
+    <button id="pause-btn" onclick="togglePause()">⏸</button>
+  </div>
+
   <!-- 스플래시 — iOS AudioContext 활성화 -->
-  <div id="splash" onclick="startGame()">
+  <div id="splash">
     <div id="splash-animals">
       <canvas id="sp-dog" width="56" height="56"></canvas>
       <canvas id="sp-cat" width="56" height="56"></canvas>
       <canvas id="sp-pig" width="56" height="56"></canvas>
       <canvas id="sp-raccoon" width="56" height="56"></canvas>
-      <canvas id="sp-bear" width="56" height="56"></canvas>
     </div>
     <h1>🐾 Animal<br>Bubble Pop</h1>
     <div class="splash-sub">동물들을 3개 이상 연결해 터뜨려요!</div>
     <button id="splash-btn">▶ 게임 시작</button>
-  </div>
-
-  <div id="btm">
-    <div id="item-btns"></div>
-    <button id="pause-btn" onclick="togglePause()">⏸</button>
   </div>
 
   <div class="overlay" id="ov-over">
@@ -243,25 +243,6 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 // CONFIG
 // ══════════════════════════════════════════
 const COLS=7, ROWS=8;
-const ANIMALS=['dog','cat','pig','raccoon','bear'];
-
-const ACOL={
-  dog:    {base:'#ffdfb2',ear:'#e8b56a',nose:'#7a3020',cheek:'#ffaa6a',hl:'rgba(255,255,255,.52)'},
-  cat:    {base:'#b3d4ff',ear:'#7aaae8',nose:'#bb6688',cheek:'#8ebef0',hl:'rgba(255,255,255,.52)'},
-  raccoon:{base:'#c0c0cc',ear:'#686878',nose:'#282838',cheek:'#d8d8e4',hl:'rgba(255,255,255,.42)'},
-  pig:    {base:'#ffb3c6',ear:'#ff88a0',nose:'#dd6677',cheek:'#ff9aae',hl:'rgba(255,255,255,.52)'},
-  bear:   {base:'#d4a574',ear:'#b07840',nose:'#502810',cheek:'#c89060',hl:'rgba(255,255,255,.46)'},
-};
-const CCSS={dog:'#ffdfb2',cat:'#b3d4ff',raccoon:'#c0c0cc',pig:'#ffb3c6',bear:'#d4a574'};
-const ANIMAL_COLOR={dog:'#ffdfb2',cat:'#b3d4ff',raccoon:'#c0c0cc',pig:'#ffb3c6',bear:'#d4a574'};
-const ANIMAL_NAME={dog:'강아지',cat:'고양이',raccoon:'너구리',pig:'돼지',bear:'곰'};
-
-// ── 아이템 정의 (순서 고정: 폭탄→십자→리폼) ──
-const ITEM_DEFS=[
-  {id:'bomb',  label:'폭탄', animalType:'dog',  badge:'💣'},
-  {id:'cross', label:'십자', animalType:'cat',  badge:'✚'},
-  {id:'reform',label:'리폼', animalType:'pig',  badge:'🔀'},
-];
 
 // ── 동물 4종 고정 (곰 제거) ──
 const ANIMALS=['dog','cat','pig','raccoon'];
@@ -1328,8 +1309,14 @@ function startGame(){
   setTimeout(()=>splash.style.display='none',400);
 }
 
+// 스플래시 버튼 이벤트 — onclick 대신 addEventListener 사용
+document.getElementById('splash-btn').addEventListener('click', startGame);
+document.getElementById('splash-btn').addEventListener('touchend', function(e){
+  e.preventDefault(); startGame();
+}, {passive:false});
+
 // 스플래시 동물 그리기
-['dog','cat','pig','raccoon','bear'].forEach(type=>{
+['dog','cat','pig','raccoon'].forEach(type=>{
   const bc=document.getElementById('sp-'+type);
   if(!bc) return;
   const bctx=bc.getContext('2d');
