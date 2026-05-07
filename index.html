@@ -275,12 +275,11 @@ function makeLevels(){
     const scoreGoal=Math.round(st*st*20+st*150+500);
     const pointPer=st<=10?10:st<=20?12:15;
 
-    // ST1=20개, 스테이지당 +1.2개씩 증가
-    // ST1→20, ST10→31, ST20→43, ST30→55
-    const base=20+Math.round((st-1)*1.2);
+    // ST1=25개, ST5=35개, 스테이지당 +2.5개씩
+    const base=25+Math.round((st-1)*2.5);
     const tgt={};
     ANIMALS.forEach((a,idx)=>{
-      tgt[a]=Math.max(15, base-idx*2);
+      tgt[a]=Math.max(20, base-idx*2);
     });
 
     const itemSlots=st<=5?1:st<=15?2:3;
