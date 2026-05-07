@@ -1211,16 +1211,36 @@ async function saveRank(list){
 
 async function submitScore(){
   const nick=(document.getElementById('nick-input').value.trim()||'익명').slice(0,8);
-  // 로딩 표시
-  document.querySelector('#ov-over .btn-p').textContent='저장 중...';
-  let list=await loadRank();
-  list.push({nick,score:G.score,st:G.lv+1,date:new Date().toLocaleDateString('ko-KR')});
-  list.sort((a,b)=>b.score-a.score);
-  list=list.slice(0,30);
-  await saveRank(list);
-  hide('ov-over');
-  renderRank(list,nick,G.score);
-  show('ov-rank');
+  const btn=document.querySelector('#ov-over .btn-p');
+  btn.textContent='저장 중...';
+  btn.disabled=true;
+
+  try{
+    // 1. 기존 랭킹 불러오기
+    let list=await loadRank();
+
+    // 2. 새 점수 추가
+    list.push({nick,score:G.score,st:G.lv+1,date:new Date().toLocaleDateString('ko-KR')});
+    list.sort((a,b)=>b.score-a.score);
+    list=list.slice(0,30);
+
+    // 3. 저장
+    await saveRank(list);
+
+    // 4. 랭킹 팝업 표시
+    hide('ov-over');
+    renderRank(list,nick,G.score);
+    show('ov-rank');
+  }catch(err){
+    // 네트워크 실패해도 로컬 데이터로 랭킹 보여주기
+    const local=JSON.parse(localStorage.getItem(RANK_KEY)||'[]');
+    hide('ov-over');
+    renderRank(local,nick,G.score);
+    show('ov-rank');
+  }finally{
+    btn.textContent='🏆 점수 등록 & 랭킹';
+    btn.disabled=false;
+  }
 }
 
 function renderRank(list,myNick,myScore){
