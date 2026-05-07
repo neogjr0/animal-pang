@@ -1080,7 +1080,7 @@ function addFloat(text,x,y){
 }
 
 let comboTimer,comboResetTimer=null;
-const COMBO_WINDOW=600; // 더 짧게 — 콤보 유지 어렵게
+const COMBO_WINDOW=720; // 더 짧게 — 콤보 유지 어렵게
 function armComboReset(){
   clearTimeout(comboResetTimer);
   comboResetTimer=setTimeout(()=>{if(G.combo>0){G.combo=0;document.getElementById('combo-badge').classList.remove('show');}},COMBO_WINDOW);
