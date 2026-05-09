@@ -111,55 +111,7 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 #boss-alert{top:40%;background:linear-gradient(135deg,#ef4444,#991b1b);font-size:16px;padding:10px 22px;z-index:16;border-radius:18px;box-shadow:0 0 40px rgba(255,0,0,.5)}
 #boss-alert.show{transform:translate(-50%,-50%) scale(1);opacity:1}
 
-/* ── 콤보 배지 — 레벨별 스타일 ── */
-#combo-badge{
-  position:absolute;left:50%;top:48%;
-  pointer-events:none;z-index:20;white-space:nowrap;
-  transform:translate(-50%,-50%) scale(0);
-  opacity:0;
-  display:flex;flex-direction:column;align-items:center;gap:2px;
-}
-#combo-badge.show{
-  animation:comboPop .55s cubic-bezier(.34,1.56,.64,1) forwards;
-}
-#combo-badge.hide-out{
-  animation:comboFadeOut .35s ease-in forwards;
-}
-@keyframes comboPop{
-  0%  {transform:translate(-50%,-50%) scale(0) rotate(-8deg);opacity:0}
-  60% {transform:translate(-50%,-50%) scale(1.18) rotate(2deg);opacity:1}
-  100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}
-}
-@keyframes comboFadeOut{
-  0%  {transform:translate(-50%,-50%) scale(1);opacity:1}
-  100%{transform:translate(-50%,-50%) scale(.7) translateY(-18px);opacity:0}
-}
-#combo-num{
-  font-size:52px;font-weight:900;line-height:1;
-  font-family:'Nunito',sans-serif;
-  letter-spacing:-2px;
-  -webkit-text-stroke:2px rgba(0,0,0,.3);
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,.5));
-}
-#combo-label{
-  font-size:13px;font-weight:900;letter-spacing:.15em;
-  color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);
-}
-#combo-ring{
-  position:absolute;left:50%;top:50%;
-  transform:translate(-50%,-50%);
-  width:110px;height:110px;
-  border-radius:50%;
-  border:4px solid rgba(255,255,255,.5);
-  animation:ringExpand .55s ease-out forwards;
-  pointer-events:none;z-index:19;
-  display:none;
-}
-#combo-ring.show{display:block}
-@keyframes ringExpand{
-  0%  {transform:translate(-50%,-50%) scale(.3);opacity:.8}
-  100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}
-}
+/* combo handled by canvas */
 
 /* ── 점수 플로팅 — 콤보 레벨별 ── */
 .fscore{
@@ -168,18 +120,18 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
   text-shadow:0 2px 6px rgba(0,0,0,.7);
   font-family:'Nunito',sans-serif;
 }
-.fscore.lv0{font-size:15px;animation:floatUp0 .75s forwards}
-.fscore.lv1{font-size:18px;color:#e879f9;animation:floatUp1 .8s forwards;text-shadow:0 0 12px rgba(232,121,249,.6)}
-.fscore.lv2{font-size:22px;color:#fb923c;animation:floatUp2 .85s forwards;text-shadow:0 0 14px rgba(251,146,60,.7)}
-.fscore.lv3{font-size:28px;color:#f87171;animation:floatUp3 .9s forwards;text-shadow:0 0 18px rgba(248,113,113,.8)}
-.fscore.lv4{font-size:36px;color:#fbbf24;animation:floatUp4 1s forwards;text-shadow:0 0 24px rgba(251,191,36,.9),0 0 48px rgba(251,191,36,.4)}
+.fscore.lv0{font-size:16px;animation:floatUp0 .75s forwards}
+.fscore.lv1{font-size:20px;color:#e879f9;animation:floatUp1 .82s forwards;text-shadow:0 0 14px rgba(232,121,249,.7)}
+.fscore.lv2{font-size:26px;color:#fb923c;animation:floatUp2 .88s forwards;text-shadow:0 0 16px rgba(251,146,60,.8)}
+.fscore.lv3{font-size:34px;color:#f87171;animation:floatUp3 .95s forwards;text-shadow:0 0 20px rgba(248,113,113,.9)}
+.fscore.lv4{font-size:44px;color:#fbbf24;animation:floatUp4 1.1s forwards;text-shadow:0 0 28px rgba(251,191,36,1),0 0 56px rgba(251,191,36,.5)}
 .fscore.fever-score{color:#fbbf24;text-shadow:0 0 20px rgba(255,180,0,.9)}
 .fscore.boss-score{color:#ff6b6b;text-shadow:0 0 16px rgba(255,0,0,.8)}
-@keyframes floatUp0{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-52px) scale(.8)}}
-@keyframes floatUp1{0%{opacity:1;transform:translateY(0) scale(1)}20%{transform:translateY(-8px) scale(1.15)}100%{opacity:0;transform:translateY(-64px) scale(.85)}}
-@keyframes floatUp2{0%{opacity:1;transform:translateY(0) scale(1)}20%{transform:translateY(-10px) scale(1.2)}100%{opacity:0;transform:translateY(-76px) scale(.8)}}
-@keyframes floatUp3{0%{opacity:1;transform:translateY(0) scale(1.1)}20%{transform:translateY(-12px) scale(1.28)}100%{opacity:0;transform:translateY(-88px) scale(.75)}}
-@keyframes floatUp4{0%{opacity:1;transform:translateY(0) scale(1.2)}15%{transform:translateY(-14px) scale(1.4)}100%{opacity:0;transform:translateY(-100px) scale(.7)}}
+@keyframes floatUp0{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-56px) scale(.8)}}
+@keyframes floatUp1{0%{opacity:1;transform:translateY(0) scale(.9)}18%{transform:translateY(-10px) scale(1.18)}100%{opacity:0;transform:translateY(-72px) scale(.82)}}
+@keyframes floatUp2{0%{opacity:1;transform:translateY(0) scale(.85)}16%{transform:translateY(-14px) scale(1.25)}100%{opacity:0;transform:translateY(-88px) scale(.76)}}
+@keyframes floatUp3{0%{opacity:1;transform:translateY(0) scale(.8)}14%{transform:translateY(-18px) scale(1.35)}100%{opacity:0;transform:translateY(-104px) scale(.7)}}
+@keyframes floatUp4{0%{opacity:1;transform:translateY(0) scale(.75)}12%{transform:translateY(-22px) scale(1.48)}100%{opacity:0;transform:translateY(-124px) scale(.62)}}
 
 #fever-glow-border{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .4s;box-shadow:inset 0 0 40px rgba(255,180,0,.5),inset 0 0 80px rgba(255,100,0,.2)}
 #fever-glow-border.on{opacity:1}
@@ -293,11 +245,7 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 
   <div id="board-wrap">
     <canvas id="gc"></canvas>
-    <div id="combo-badge">
-      <div id="combo-num">0x</div>
-      <div id="combo-label">COMBO!</div>
-    </div>
-    <div id="combo-ring"></div>
+    <!-- combo rendered on canvas -->
     <div id="allclear-badge"></div>
     <div id="score-warn"></div>
     <div id="stage-clear-toast"></div>
@@ -498,11 +446,15 @@ const STAGE_EVENTS=[
 ];
 
 const COMBO_LEVELS=[
-  {min:0,  icon:'',   mult:1.0, fever:false},
-  {min:3,  icon:'⚡', mult:1.3, fever:false},
-  {min:5,  icon:'🔥', mult:1.7, fever:false},
-  {min:8,  icon:'💥', mult:2.2, fever:false},
-  {min:10, icon:'🌟', mult:3.0, fever:true},
+  {min:0,  icon:'',   mult:1.0,  fever:false},
+  {min:3,  icon:'⚡', mult:1.3,  fever:false},
+  {min:5,  icon:'🔥', mult:1.7,  fever:false},
+  {min:8,  icon:'💥', mult:2.2,  fever:false},
+  {min:10, icon:'🌟', mult:3.0,  fever:true},
+  {min:15, icon:'🌈', mult:4.5,  fever:true},
+  {min:20, icon:'👑', mult:6.0,  fever:true},
+  {min:30, icon:'💎', mult:8.0,  fever:true},
+  {min:50, icon:'🔱', mult:12.0, fever:true},
 ];
 
 // ═══════════════════════════════════════
@@ -1237,7 +1189,7 @@ function popCells(cells,fromInteract=false){
   if(type && ANIMAL_SOUND[type]) ANIMAL_SOUND[type](G.combo);
 
   const fc=cells[Math.floor(cells.length/2)];
-  const comboLvNow = G.combo>=10?4:G.combo>=8?3:G.combo>=5?2:G.combo>=3?1:0;
+  const comboLvNow = Math.min(4, getComboCfgIdx(G.combo));
   addFloat(
     (isGolden?'💎':'')+(FEVER.on?'🔥':'')+'+'+pts,
     fc.c*CELL+CELL/2,fc.r*CELL,
@@ -1379,7 +1331,7 @@ async function _blastTgts(tgts,r,c,icon){
     popAnims.push({r,c,t:0});
     GOLDEN_CELLS.delete(r+'_'+c);
   });
-  const blastLv=G.combo>=10?4:G.combo>=8?3:G.combo>=5?2:G.combo>=3?1:0;
+  const blastLv=Math.min(4, getComboCfgIdx(G.combo));
   addFloat(icon+'+'+pts,c*CELL+CELL/2,r*CELL,FEVER.on?'fever-score':BOSS_STATE.active?'boss-score':'',blastLv);
   if(G.combo>=2){ showCombo(G.combo,cl); playComboSound(G.combo); }
   flashAlpha=.38; shake.f=9;
@@ -1508,11 +1460,13 @@ function updateTgtPanel(){
 }
 function updateMultiBar(){
   const cl=getComboLevel(G.combo);
-  const next=COMBO_LEVELS.find(c=>c.min>G.combo)||COMBO_LEVELS[COMBO_LEVELS.length-1];
-  const pct=next.min===cl.min?100:Math.min(100,(G.combo-cl.min)/(next.min-cl.min)*100);
+  const nextLv=COMBO_LEVELS.find(c=>c.min>G.combo);
+  const next=nextLv||COMBO_LEVELS[COMBO_LEVELS.length-1];
+  const pct=!nextLv?100:Math.min(100,(G.combo-cl.min)/(next.min-cl.min)*100);
   document.getElementById('multi-bar').style.width=pct+'%';
   const mult=getMultiplier();
-  document.getElementById('multi-label').textContent=`x${mult.toFixed(1)}${cl.icon}${FEVER.on?'🌟':''}`;
+  const comboIcon=COMBO_LEVELS.slice().reverse().find(c=>G.combo>=c.min)?.icon||'';
+  document.getElementById('multi-label').textContent=`x${mult.toFixed(1)} ${comboIcon}`;
   document.getElementById('multi-val').textContent=`콤보${G.combo}`;
 }
 function updateUI(){
@@ -1570,52 +1524,260 @@ function armComboReset(){
     if(G.combo>0){G.combo=0;hideCombo();}
   },COMBO_WINDOW);
 }
-function hideCombo(){
-  const el=document.getElementById('combo-badge');
-  el.classList.remove('show');
-  el.classList.add('hide-out');
-  setTimeout(()=>el.classList.remove('hide-out'),350);
+
+// ── 캔버스 콤보 연출 시스템 ──
+let COMBO_ANIM=null; // 현재 재생 중인 콤보 애니
+
+const COMBO_CFG=[
+  // lv0: 2x
+  {col:'#c084fc',col2:'#818cf8',label:'COMBO',
+   enterStyle:'slide',  exitStyle:'fadeup',  shakeAmt:3,  rings:1, meteorCount:0,  starBurst:0},
+  // lv1: 3x
+  {col:'#e879f9',col2:'#a855f7',label:'COMBO!!',
+   enterStyle:'zoom',   exitStyle:'fadeup',  shakeAmt:4,  rings:2, meteorCount:3,  starBurst:5},
+  // lv2: 5x
+  {col:'#fb923c',col2:'#ef4444',label:'GREAT!!',
+   enterStyle:'drop',   exitStyle:'explode', shakeAmt:6,  rings:3, meteorCount:7,  starBurst:10},
+  // lv3: 8x
+  {col:'#f87171',col2:'#dc2626',label:'AMAZING!!!',
+   enterStyle:'meteor', exitStyle:'explode', shakeAmt:9,  rings:4, meteorCount:12, starBurst:16},
+  // lv4: 10x
+  {col:'#fbbf24',col2:'#f97316',label:'FEVER COMBO!!!',
+   enterStyle:'meteor', exitStyle:'explode', shakeAmt:14, rings:6, meteorCount:18, starBurst:24},
+  // lv5: 15x — 무지개
+  {col:'#34d399',col2:'#06b6d4',label:'🌈 RAINBOW COMBO!!',
+   enterStyle:'meteor', exitStyle:'explode', shakeAmt:18, rings:7, meteorCount:24, starBurst:32},
+  // lv6: 20x — 킹
+  {col:'#a78bfa',col2:'#ec4899',label:'👑 KING COMBO!!!',
+   enterStyle:'meteor', exitStyle:'explode', shakeAmt:22, rings:9, meteorCount:32, starBurst:42},
+  // lv7: 30x — 다이아
+  {col:'#67e8f9',col2:'#a5f3fc',label:'💎 DIAMOND COMBO!!!!',
+   enterStyle:'meteor', exitStyle:'explode', shakeAmt:28, rings:12,meteorCount:42, starBurst:56},
+  // lv8: 50x — 신
+  {col:'#fff',   col2:'#fbbf24',label:'🔱 GOD COMBO!!!!!',
+   enterStyle:'meteor', exitStyle:'explode', shakeAmt:36, rings:16,meteorCount:60, starBurst:80},
+];
+// 콤보 레벨 인덱스 (COMBO_CFG 인덱스)
+function getComboCfgIdx(n){
+  if(n>=50) return 8;
+  if(n>=30) return 7;
+  if(n>=20) return 6;
+  if(n>=15) return 5;
+  if(n>=10) return 4;
+  if(n>=8)  return 3;
+  if(n>=5)  return 2;
+  if(n>=3)  return 1;
+  return 0;
 }
-function showCombo(n,cl){
-  const el=document.getElementById('combo-badge');
-  const ring=document.getElementById('combo-ring');
-  const numEl=document.getElementById('combo-num');
-  const lblEl=document.getElementById('combo-label');
 
-  // 콤보 레벨별 색상·크기
-  const lvCfg=[
-    {col:'#c084fc',shadow:'rgba(192,132,252,.8)',ring:'rgba(192,132,252,.6)',sz:'42px',lbl:'COMBO!'},
-    {col:'#e879f9',shadow:'rgba(232,121,249,.9)',ring:'rgba(232,121,249,.7)',sz:'48px',lbl:'COMBO!!'},
-    {col:'#fb923c',shadow:'rgba(251,146,60,.9)', ring:'rgba(251,146,60,.7)', sz:'54px',lbl:'GREAT COMBO!!'},
-    {col:'#f87171',shadow:'rgba(248,113,113,.9)',ring:'rgba(248,113,113,.8)',sz:'60px',lbl:'AMAZING!!!'},
-    {col:'#fbbf24',shadow:'rgba(251,191,36,1)',  ring:'rgba(251,191,36,.9)', sz:'68px',lbl:'🌟 FEVER COMBO 🌟'},
-  ];
-  const ci = n>=10?4 : n>=8?3 : n>=5?2 : n>=3?1 : 0;
-  const cfg=lvCfg[ci];
+// 콤보 캔버스 파티클들
+let comboFx=[];  // {type,x,y,vx,vy,life,decay,col,sz,rot,rotV}
 
-  numEl.textContent=n+'x';
-  numEl.style.fontSize=cfg.sz;
-  numEl.style.color=cfg.col;
-  numEl.style.textShadow=`0 0 20px ${cfg.shadow}, 0 0 40px ${cfg.shadow}`;
-  lblEl.textContent=cfg.lbl;
-  lblEl.style.color=cfg.col;
+function spawnComboFx(cfg, cx, cy){
+  // 링 웨이브
+  for(let r=0;r<cfg.rings;r++){
+    comboFx.push({type:'ring',x:cx,y:cy,r:0,maxR:80+r*55,life:1,decay:.028-r*.004,col:cfg.col,lw:4-r*.5});
+  }
+  // 별 폭발
+  for(let i=0;i<cfg.starBurst;i++){
+    const a=Math.random()*Math.PI*2, spd=3+Math.random()*7;
+    comboFx.push({type:'star',x:cx,y:cy,vx:Math.cos(a)*spd,vy:Math.sin(a)*spd-2,
+      life:1,decay:.022+Math.random()*.018,col:Math.random()>.5?cfg.col:cfg.col2,
+      sz:3+Math.random()*5,rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.4});
+  }
+  // 고콤보 전용 화면 플래시
+  if(cfg.shakeAmt>=18){
+    flashAlpha=Math.min(.55, cfg.shakeAmt*.015);
+  }
+  // 메테오 흔적
+  for(let i=0;i<cfg.meteorCount;i++){
+    const a=-Math.PI/2+(Math.random()-.5)*1.2, spd=5+Math.random()*9;
+    comboFx.push({type:'trail',x:cx+(Math.random()-.5)*60,y:cy-canvas.height*.15-Math.random()*60,
+      vx:Math.cos(a)*spd,vy:Math.sin(a)*spd,
+      life:1,decay:.03+Math.random()*.02,col:Math.random()>.5?cfg.col:'#fff',
+      sz:2+Math.random()*4,len:18+Math.random()*24});
+  }
+}
 
-  // 링 이펙트 (콤보 3 이상)
-  if(n>=3){
-    ring.style.borderColor=cfg.ring;
-    ring.classList.remove('show');
-    void ring.offsetWidth; // reflow
-    ring.classList.add('show');
-    setTimeout(()=>ring.classList.remove('show'),560);
+function updateComboFx(dt){
+  comboFx.forEach(p=>{
+    if(p.type==='ring'){p.r+=dt*.22;p.life-=p.decay*dt*.06;}
+    else{
+      p.x+=p.vx*dt*.055;p.y+=p.vy*dt*.055;
+      if(p.type!=='trail') p.vy+=.18;
+      else p.vy+=.08;
+      p.life-=p.decay*dt*.06;
+      if(p.rot!==undefined) p.rot+=p.rotV;
+    }
+  });
+  comboFx=comboFx.filter(p=>p.life>0);
+}
+
+function renderComboFx(){
+  comboFx.forEach(p=>{
+    ctx.save();ctx.globalAlpha=Math.max(0,p.life);
+    if(p.type==='ring'){
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.strokeStyle=p.col;ctx.lineWidth=Math.max(.5,p.lw*p.life);
+      ctx.stroke();
+    } else if(p.type==='star'){
+      ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      ctx.fillStyle=p.col;
+      ctx.beginPath();
+      for(let i=0;i<5;i++){
+        const a=(Math.PI*2/5)*i-Math.PI/2, b=a+Math.PI/5;
+        ctx.lineTo(Math.cos(a)*p.sz,Math.sin(a)*p.sz);
+        ctx.lineTo(Math.cos(b)*p.sz*.4,Math.sin(b)*p.sz*.4);
+      }
+      ctx.closePath();ctx.fill();
+    } else if(p.type==='trail'){
+      ctx.strokeStyle=p.col;ctx.lineWidth=p.sz*p.life;
+      ctx.lineCap='round';
+      ctx.beginPath();
+      ctx.moveTo(p.x,p.y);
+      ctx.lineTo(p.x-p.vx*(p.len/9),p.y-p.vy*(p.len/9));
+      ctx.stroke();
+    }
+    ctx.restore();
+  });
+}
+
+function renderComboText(){
+  if(!COMBO_ANIM) return;
+  const ca=COMBO_ANIM;
+  const t=ca.t;  // 0→1 진행
+  const cfg=ca.cfg;
+  const cx=ca.cx, cy=ca.cy;
+
+  ctx.save();
+
+  // ── 진입 연출 ──
+  let scale=1, alpha=1, tx=0, ty=0;
+  if(t<ca.inDur){
+    const p=t/ca.inDur;  // 0→1
+    if(ca.enterStyle==='zoom'){
+      // 작다가 튕기며 커짐
+      const ease=p<.6 ? (p/.6)*1.22 : 1.22-(p-.6)/.4*.22;
+      scale=ease; alpha=Math.min(1,p*3);
+    } else if(ca.enterStyle==='slide'){
+      tx=(1-p)*-canvas.width*.35;
+      scale=.8+p*.2; alpha=Math.min(1,p*2.5);
+    } else if(ca.enterStyle==='drop'){
+      // 위에서 강하게 떨어짐
+      const ease=p<.5?p*p*4:(1-(2*p-1)*(2*p-1));
+      ty=(1-ease)*-canvas.height*.4;
+      scale=.6+ease*.55; alpha=Math.min(1,p*3);
+    } else if(ca.enterStyle==='meteor'){
+      // 대각선으로 날아들어옴
+      const ease=1-Math.pow(1-p,3);
+      tx=(1-ease)*canvas.width*.5;
+      ty=(1-ease)*-canvas.height*.35;
+      scale=.4+ease*.8; alpha=Math.min(1,p*2);
+      // 메테오 흔적
+      if(p>.1&&p<.85){
+        ctx.save();
+        ctx.strokeStyle=cfg.col;ctx.lineWidth=8*p*(1-p)*4;
+        ctx.globalAlpha=alpha*(1-p)*1.2;ctx.lineCap='round';
+        ctx.beginPath();
+        ctx.moveTo(cx+tx,cy+ty);
+        ctx.lineTo(cx+tx+60*(1-ease),cy+ty-40*(1-ease));
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
   }
 
-  // 배지 팝
-  el.classList.remove('show','hide-out');
-  void el.offsetWidth;
-  el.classList.add('show');
+  // ── 퇴장 연출 ──
+  if(t>ca.stayEnd){
+    const p=(t-ca.stayEnd)/(1-ca.stayEnd);
+    if(ca.exitStyle==='fadeup'){
+      ty -= p*40; alpha=1-p;
+    } else if(ca.exitStyle==='explode'){
+      scale=1+p*.6; alpha=1-p*p;
+    }
+  }
+
+  // ── 살짝 흔들리는 고동 (stay 중) ──
+  let pulse=1;
+  if(t>=ca.inDur&&t<=ca.stayEnd){
+    pulse=1+Math.sin((t-ca.inDur)*18)*0.03;
+  }
+  scale*=pulse;
+
+  ctx.translate(cx+tx, cy+ty);
+  ctx.scale(scale, scale);
+  ctx.globalAlpha=Math.max(0,alpha);
+
+  // 숫자 (크고 굵게)
+  const numSz=ca.numSz;
+  ctx.font=`900 ${numSz}px 'Nunito',sans-serif`;
+  ctx.textAlign='center';ctx.textBaseline='middle';
+
+  // 글로우 레이어
+  for(let g=3;g>=1;g--){
+    ctx.save();
+    ctx.shadowColor=cfg.col;ctx.shadowBlur=18*g;
+    ctx.fillStyle=cfg.col;
+    ctx.globalAlpha=alpha*.18;
+    ctx.fillText(ca.numText,0,-numSz*.38);
+    ctx.restore();
+  }
+  // 테두리
+  ctx.strokeStyle='rgba(0,0,0,.6)';ctx.lineWidth=numSz*.09;ctx.lineJoin='round';
+  ctx.strokeText(ca.numText,0,-numSz*.38);
+  // 메인 그라디언트
+  const grd=ctx.createLinearGradient(0,-numSz*.7,0,0);
+  grd.addColorStop(0,'#fff');
+  grd.addColorStop(.4,cfg.col);
+  grd.addColorStop(1,cfg.col2);
+  ctx.fillStyle=grd;
+  ctx.fillText(ca.numText,0,-numSz*.38);
+
+  // 라벨 텍스트
+  const lblSz=numSz*.32;
+  ctx.font=`900 ${lblSz}px 'Nunito',sans-serif`;
+  ctx.letterSpacing='2px';
+  ctx.strokeStyle='rgba(0,0,0,.7)';ctx.lineWidth=lblSz*.1;
+  ctx.strokeText(cfg.label,0,numSz*.22);
+  ctx.fillStyle='#fff';
+  ctx.shadowColor=cfg.col;ctx.shadowBlur=10;
+  ctx.fillText(cfg.label,0,numSz*.22);
+
+  ctx.restore();
+}
+
+function hideCombo(){
+  COMBO_ANIM=null;
+  comboFx=[];
+}
+
+function showCombo(n,cl){
+  const ci=getComboCfgIdx(n);
+  const cfg=COMBO_CFG[ci];
+  const numSz=ci>=8?88:ci>=7?82:ci>=6?78:ci>=5?74:ci===4?70:ci===3?62:ci===2?54:ci===1?48:42;
+  const inDur=.22, stayEnd=ci>=6?.55:ci>=3?.62:.70;
+  const cx=canvas.width/2, cy=canvas.height*.44;
+
+  COMBO_ANIM={
+    t:0, cfg, ci,
+    numText:n+'x',
+    numSz,
+    cx,cy,
+    inDur,stayEnd,
+    enterStyle:cfg.enterStyle,
+    exitStyle:cfg.exitStyle,
+    done:false,
+  };
+
+  // FX 스폰
+  spawnComboFx(cfg, cx, cy);
+
+  // 화면 흔들기
+  if(cfg.shakeAmt>0) shake.f=Math.max(shake.f,cfg.shakeAmt);
 
   clearTimeout(comboTimer);
-  comboTimer=setTimeout(()=>hideCombo(), n>=8?1400:n>=5?1100:900);
+  const dur=ci>=8?3.2:ci>=7?2.8:ci>=6?2.4:ci>=5?2.1:ci>=4?1.8:ci>=3?1.5:ci>=2?1.2:ci>=1?1.0:.85;
+  comboTimer=setTimeout(()=>{COMBO_ANIM=null;comboFx=[];}, dur*1000+100);
 }
 let allClearTimer;
 function showAllClear(){
@@ -1738,8 +1900,9 @@ function restart(){
   clearTimerFlash();
   [comboResetTimer,comboTimer,allClearTimer,warnTimer,stageClearTimer,feverBadgeTimer,eventBadgeTimer,bossAlertTimer]
     .forEach(t=>clearTimeout(t));
-  ['combo-badge','allclear-badge','score-warn','stage-clear-toast','fever-badge','event-badge','boss-alert']
+  ['allclear-badge','score-warn','stage-clear-toast','fever-badge','event-badge','boss-alert']
     .forEach(id=>document.getElementById(id).classList.remove('show'));
+  hideCombo();
   chaining=false; drag={on:false,r:-1,c:-1};
   initState(0); updateUI();
 }
@@ -1837,6 +2000,8 @@ function render(){
   }
   ctx.restore();
   renderParticles();
+  renderComboFx();
+  renderComboText();
 }
 
 // ═══════════════════════════════════════
@@ -1848,6 +2013,11 @@ function loop(ts){
   popAnims.forEach(a=>{a.t=Math.min(1,a.t+dt/240);});
   popAnims=popAnims.filter(a=>a.t<1);
   if(swapAnim){swapAnim.t=Math.min(1,swapAnim.t+dt/200);if(swapAnim.t>=1)swapAnim=null;}
+  if(COMBO_ANIM){
+    COMBO_ANIM.t=Math.min(1,COMBO_ANIM.t+dt/1000);
+    if(COMBO_ANIM.t>=1){COMBO_ANIM=null;comboFx=[];}
+  }
+  updateComboFx(dt);
   updateParticles(dt);
   if(!G.paused&&!G.over&&!winTriggered){
     const speedMult=EVENT.on&&EVENT.id==='speed'?1.5:1;
