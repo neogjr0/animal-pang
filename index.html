@@ -91,14 +91,13 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 #board-wrap{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 #gc{display:block;touch-action:none}
 
-#combo-badge,#allclear-badge,#score-warn,#stage-clear-toast,#fever-badge,#event-badge,#boss-alert{
+/* ── 기본 뱃지 공통 ── */
+#allclear-badge,#score-warn,#stage-clear-toast,#fever-badge,#event-badge,#boss-alert{
   position:absolute;left:50%;color:#fff;font-weight:900;border-radius:99px;
   pointer-events:none;z-index:10;white-space:nowrap;
   transform:translateX(-50%) scale(0);opacity:0;
   transition:transform .2s cubic-bezier(.34,1.56,.64,1),opacity .2s;
 }
-#combo-badge{top:50%;background:linear-gradient(135deg,#c084fc,#818cf8);font-size:22px;padding:7px 20px;box-shadow:0 4px 20px rgba(192,132,252,.5)}
-#combo-badge.show{transform:translate(-50%,-50%) scale(1);opacity:1}
 #allclear-badge{top:38%;background:linear-gradient(135deg,#f59e0b,#ef4444);font-size:18px;padding:9px 22px;z-index:13}
 #allclear-badge.show{transform:translate(-50%,-50%) scale(1);opacity:1}
 #score-warn{top:50%;background:linear-gradient(135deg,#ef4444,#dc2626);font-size:15px;padding:7px 16px;z-index:12}
@@ -111,6 +110,76 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 #event-badge.show{transform:translate(-50%,-50%) scale(1);opacity:1}
 #boss-alert{top:40%;background:linear-gradient(135deg,#ef4444,#991b1b);font-size:16px;padding:10px 22px;z-index:16;border-radius:18px;box-shadow:0 0 40px rgba(255,0,0,.5)}
 #boss-alert.show{transform:translate(-50%,-50%) scale(1);opacity:1}
+
+/* ── 콤보 배지 — 레벨별 스타일 ── */
+#combo-badge{
+  position:absolute;left:50%;top:48%;
+  pointer-events:none;z-index:20;white-space:nowrap;
+  transform:translate(-50%,-50%) scale(0);
+  opacity:0;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+#combo-badge.show{
+  animation:comboPop .55s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+#combo-badge.hide-out{
+  animation:comboFadeOut .35s ease-in forwards;
+}
+@keyframes comboPop{
+  0%  {transform:translate(-50%,-50%) scale(0) rotate(-8deg);opacity:0}
+  60% {transform:translate(-50%,-50%) scale(1.18) rotate(2deg);opacity:1}
+  100%{transform:translate(-50%,-50%) scale(1) rotate(0deg);opacity:1}
+}
+@keyframes comboFadeOut{
+  0%  {transform:translate(-50%,-50%) scale(1);opacity:1}
+  100%{transform:translate(-50%,-50%) scale(.7) translateY(-18px);opacity:0}
+}
+#combo-num{
+  font-size:52px;font-weight:900;line-height:1;
+  font-family:'Nunito',sans-serif;
+  letter-spacing:-2px;
+  -webkit-text-stroke:2px rgba(0,0,0,.3);
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.5));
+}
+#combo-label{
+  font-size:13px;font-weight:900;letter-spacing:.15em;
+  color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+#combo-ring{
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:110px;height:110px;
+  border-radius:50%;
+  border:4px solid rgba(255,255,255,.5);
+  animation:ringExpand .55s ease-out forwards;
+  pointer-events:none;z-index:19;
+  display:none;
+}
+#combo-ring.show{display:block}
+@keyframes ringExpand{
+  0%  {transform:translate(-50%,-50%) scale(.3);opacity:.8}
+  100%{transform:translate(-50%,-50%) scale(2.2);opacity:0}
+}
+
+/* ── 점수 플로팅 — 콤보 레벨별 ── */
+.fscore{
+  position:absolute;font-weight:900;color:#fde68a;
+  pointer-events:none;z-index:11;white-space:nowrap;
+  text-shadow:0 2px 6px rgba(0,0,0,.7);
+  font-family:'Nunito',sans-serif;
+}
+.fscore.lv0{font-size:15px;animation:floatUp0 .75s forwards}
+.fscore.lv1{font-size:18px;color:#e879f9;animation:floatUp1 .8s forwards;text-shadow:0 0 12px rgba(232,121,249,.6)}
+.fscore.lv2{font-size:22px;color:#fb923c;animation:floatUp2 .85s forwards;text-shadow:0 0 14px rgba(251,146,60,.7)}
+.fscore.lv3{font-size:28px;color:#f87171;animation:floatUp3 .9s forwards;text-shadow:0 0 18px rgba(248,113,113,.8)}
+.fscore.lv4{font-size:36px;color:#fbbf24;animation:floatUp4 1s forwards;text-shadow:0 0 24px rgba(251,191,36,.9),0 0 48px rgba(251,191,36,.4)}
+.fscore.fever-score{color:#fbbf24;text-shadow:0 0 20px rgba(255,180,0,.9)}
+.fscore.boss-score{color:#ff6b6b;text-shadow:0 0 16px rgba(255,0,0,.8)}
+@keyframes floatUp0{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-52px) scale(.8)}}
+@keyframes floatUp1{0%{opacity:1;transform:translateY(0) scale(1)}20%{transform:translateY(-8px) scale(1.15)}100%{opacity:0;transform:translateY(-64px) scale(.85)}}
+@keyframes floatUp2{0%{opacity:1;transform:translateY(0) scale(1)}20%{transform:translateY(-10px) scale(1.2)}100%{opacity:0;transform:translateY(-76px) scale(.8)}}
+@keyframes floatUp3{0%{opacity:1;transform:translateY(0) scale(1.1)}20%{transform:translateY(-12px) scale(1.28)}100%{opacity:0;transform:translateY(-88px) scale(.75)}}
+@keyframes floatUp4{0%{opacity:1;transform:translateY(0) scale(1.2)}15%{transform:translateY(-14px) scale(1.4)}100%{opacity:0;transform:translateY(-100px) scale(.7)}}
 
 #fever-glow-border{position:absolute;inset:0;pointer-events:none;z-index:4;opacity:0;transition:opacity .4s;box-shadow:inset 0 0 40px rgba(255,180,0,.5),inset 0 0 80px rgba(255,100,0,.2)}
 #fever-glow-border.on{opacity:1}
@@ -224,7 +293,11 @@ html,body{height:100%;height:100dvh;background:#0d0520;font-family:'Nunito',sans
 
   <div id="board-wrap">
     <canvas id="gc"></canvas>
-    <div id="combo-badge"></div>
+    <div id="combo-badge">
+      <div id="combo-num">0x</div>
+      <div id="combo-label">COMBO!</div>
+    </div>
+    <div id="combo-ring"></div>
     <div id="allclear-badge"></div>
     <div id="score-warn"></div>
     <div id="stage-clear-toast"></div>
@@ -1004,7 +1077,7 @@ function endFever(){
   setAppMode(BOSS_STATE.active?(BOSS_STATE.def?.type==='main'?'boss':'midboss'):'normal');
   document.getElementById('fever-status').classList.remove('on');
   G.combo=0; clearTimeout(comboResetTimer);
-  document.getElementById('combo-badge').classList.remove('show');
+  hideCombo();
 }
 
 // ═══════════════════════════════════════
@@ -1164,10 +1237,12 @@ function popCells(cells,fromInteract=false){
   if(type && ANIMAL_SOUND[type]) ANIMAL_SOUND[type](G.combo);
 
   const fc=cells[Math.floor(cells.length/2)];
+  const comboLvNow = G.combo>=10?4:G.combo>=8?3:G.combo>=5?2:G.combo>=3?1:0;
   addFloat(
     (isGolden?'💎':'')+(FEVER.on?'🔥':'')+'+'+pts,
     fc.c*CELL+CELL/2,fc.r*CELL,
-    FEVER.on?'fever-score':BOSS_STATE.active?'boss-score':''
+    FEVER.on?'fever-score':BOSS_STATE.active?'boss-score':'',
+    comboLvNow
   );
 
   if(G.combo>=2){ showCombo(G.combo,cl); playComboSound(G.combo); }
@@ -1191,7 +1266,7 @@ function popCells(cells,fromInteract=false){
         if(navigator.vibrate) navigator.vibrate([40,15,40,15,40,15,80]);
         await sleep(120); doRefill();
         G.combo=0; clearTimeout(comboResetTimer);
-        document.getElementById('combo-badge').classList.remove('show');
+        hideCombo();
       } else {
         cells.forEach(({r,c})=>{G.grid[r][c]=null;});
         doGravity(); doRefill();
@@ -1304,7 +1379,8 @@ async function _blastTgts(tgts,r,c,icon){
     popAnims.push({r,c,t:0});
     GOLDEN_CELLS.delete(r+'_'+c);
   });
-  addFloat(icon+'+'+pts,c*CELL+CELL/2,r*CELL,FEVER.on?'fever-score':BOSS_STATE.active?'boss-score':'');
+  const blastLv=G.combo>=10?4:G.combo>=8?3:G.combo>=5?2:G.combo>=3?1:0;
+  addFloat(icon+'+'+pts,c*CELL+CELL/2,r*CELL,FEVER.on?'fever-score':BOSS_STATE.active?'boss-score':'',blastLv);
   if(G.combo>=2){ showCombo(G.combo,cl); playComboSound(G.combo); }
   flashAlpha=.38; shake.f=9;
   if(icon==='💥') playBombSound(); else playCrossSound();
@@ -1470,14 +1546,18 @@ function clearTimerFlash(){
   document.getElementById('timer-flash').classList.remove('pulse');
 }
 
-function addFloat(text,x,y,extraClass=''){
+function addFloat(text,x,y,extraClass='',comboLv=0){
   const wrap=document.getElementById('board-wrap');
   const rect=canvas.getBoundingClientRect(),wr=wrap.getBoundingClientRect();
   const el=document.createElement('div');
-  el.className='fscore'+(extraClass?' '+extraClass:'');
+  // 콤보 레벨별 클래스 (lv0~lv4)
+  const lvClass='lv'+Math.min(4,comboLv);
+  el.className='fscore '+lvClass+(extraClass?' '+extraClass:'');
   el.textContent=text;
+  // 콤보 높을수록 살짝 위쪽에 뜨게
+  const yOffset = comboLv>=4?-20:comboLv>=3?-12:comboLv>=2?-6:0;
   el.style.left=(rect.left-wr.left+x*rect.width/canvas.width)+'px';
-  el.style.top=(rect.top-wr.top+y*rect.height/canvas.height)+'px';
+  el.style.top=(rect.top-wr.top+y*rect.height/canvas.height+yOffset)+'px';
   wrap.appendChild(el);
   el.addEventListener('animationend',()=>el.remove());
 }
@@ -1486,18 +1566,56 @@ let comboTimer,comboResetTimer=null;
 const COMBO_WINDOW=900;
 function armComboReset(){
   clearTimeout(comboResetTimer);
-  comboResetTimer=setTimeout(()=>{if(G.combo>0){G.combo=0;document.getElementById('combo-badge').classList.remove('show');}},COMBO_WINDOW);
+  comboResetTimer=setTimeout(()=>{
+    if(G.combo>0){G.combo=0;hideCombo();}
+  },COMBO_WINDOW);
+}
+function hideCombo(){
+  const el=document.getElementById('combo-badge');
+  el.classList.remove('show');
+  el.classList.add('hide-out');
+  setTimeout(()=>el.classList.remove('hide-out'),350);
 }
 function showCombo(n,cl){
   const el=document.getElementById('combo-badge');
-  const icon=cl?.icon||'';
-  el.textContent=n+'x COMBO! '+icon;
-  el.style.background=n>=10?'linear-gradient(135deg,#fbbf24,#f97316)':
-                       n>=8 ?'linear-gradient(135deg,#ef4444,#991b1b)':
-                       n>=5 ?'linear-gradient(135deg,#f97316,#dc2626)':
-                             'linear-gradient(135deg,#c084fc,#818cf8)';
+  const ring=document.getElementById('combo-ring');
+  const numEl=document.getElementById('combo-num');
+  const lblEl=document.getElementById('combo-label');
+
+  // 콤보 레벨별 색상·크기
+  const lvCfg=[
+    {col:'#c084fc',shadow:'rgba(192,132,252,.8)',ring:'rgba(192,132,252,.6)',sz:'42px',lbl:'COMBO!'},
+    {col:'#e879f9',shadow:'rgba(232,121,249,.9)',ring:'rgba(232,121,249,.7)',sz:'48px',lbl:'COMBO!!'},
+    {col:'#fb923c',shadow:'rgba(251,146,60,.9)', ring:'rgba(251,146,60,.7)', sz:'54px',lbl:'GREAT COMBO!!'},
+    {col:'#f87171',shadow:'rgba(248,113,113,.9)',ring:'rgba(248,113,113,.8)',sz:'60px',lbl:'AMAZING!!!'},
+    {col:'#fbbf24',shadow:'rgba(251,191,36,1)',  ring:'rgba(251,191,36,.9)', sz:'68px',lbl:'🌟 FEVER COMBO 🌟'},
+  ];
+  const ci = n>=10?4 : n>=8?3 : n>=5?2 : n>=3?1 : 0;
+  const cfg=lvCfg[ci];
+
+  numEl.textContent=n+'x';
+  numEl.style.fontSize=cfg.sz;
+  numEl.style.color=cfg.col;
+  numEl.style.textShadow=`0 0 20px ${cfg.shadow}, 0 0 40px ${cfg.shadow}`;
+  lblEl.textContent=cfg.lbl;
+  lblEl.style.color=cfg.col;
+
+  // 링 이펙트 (콤보 3 이상)
+  if(n>=3){
+    ring.style.borderColor=cfg.ring;
+    ring.classList.remove('show');
+    void ring.offsetWidth; // reflow
+    ring.classList.add('show');
+    setTimeout(()=>ring.classList.remove('show'),560);
+  }
+
+  // 배지 팝
+  el.classList.remove('show','hide-out');
+  void el.offsetWidth;
   el.classList.add('show');
-  clearTimeout(comboTimer); comboTimer=setTimeout(()=>el.classList.remove('show'),900);
+
+  clearTimeout(comboTimer);
+  comboTimer=setTimeout(()=>hideCombo(), n>=8?1400:n>=5?1100:900);
 }
 let allClearTimer;
 function showAllClear(){
